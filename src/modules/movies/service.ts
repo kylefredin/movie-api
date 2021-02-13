@@ -9,8 +9,12 @@ class MovieService {
     private movieRepository: Repository<Movie>
   ) {}
 
-  async findAll(): Promise<Movie[]> {
-    return this.movieRepository.find();
+  async findAll(limit: number, offset: number): Promise<Movie[]> {
+    return this.movieRepository
+      .createQueryBuilder()
+      .skip(offset)
+      .take(limit)
+      .getMany();
   }
 
   async findOne(id: number): Promise<Movie> {

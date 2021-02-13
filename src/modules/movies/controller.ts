@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from "@nestjs/common";
+import { Controller, Get, Param, Query } from "@nestjs/common";
 import { Movie } from "../../entity/Movie";
 import { MovieService } from "./service";
 
@@ -7,13 +7,15 @@ class MovieController {
   constructor(private movieService: MovieService) {}
 
   @Get()
-  async findAll(): Promise<Movie[]> {
-    return this.movieService.findAll();
+  async findAll(@Query() query: any): Promise<Movie[]> {
+    const { limit = 50, offset = 0 } = query;
+
+    return this.movieService.findAll(limit, offset);
   }
 
   @Get(":id")
-  async findOne(@Param() params: any): Promise<Movie> {
-    return this.movieService.findOne(params.id);
+  async findOne(@Param("id") id: number): Promise<Movie> {
+    return this.movieService.findOne(id);
   }
 }
 
