@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "start": "ts-node src/index.ts"
+    "start": "ts-node src/main.ts"
   },
   "author": "Kyle Fredin <kylefredin@gmail.com>",
   "license": "ISC",
@@ -17,9 +17,13 @@
     "typescript": "~3.3.3333"
   },
   "dependencies": {
-    "class-validator": "^0.13.1",
+    "@nestjs/common": "~7.6.12",
+    "@nestjs/core": "~7.6.12",
+    "@nestjs/platform-express": "~7.6.12",
+    "class-validator": "~0.13.1",
     "mysql2": "~2.2.5",
-    "reflect-metadata": "~0.1.10",
+    "reflect-metadata": "~0.1.13",
+    "rxjs": "~6.6.3",
     "typeorm": "~0.2.31",
     "typeorm-seeding": "~1.6.1"
   }
