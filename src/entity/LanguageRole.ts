@@ -1,8 +1,8 @@
-import { Entity, Column } from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 class LanguageRole {
-  @Column({ type: "int", width: 10, nullable: false })
+  @PrimaryColumn({ type: "int", width: 10, nullable: false })
   roleId: number;
 
   @Column({ type: "varchar", length: 20, nullable: true })

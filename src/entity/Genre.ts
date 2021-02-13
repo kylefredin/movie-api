@@ -1,8 +1,8 @@
-import { Entity, Column } from "typeorm";
+import { Entity, Column, PrimaryColumn } from "typeorm";
 
 @Entity()
 class Genre {
-  @Column({ type: "int", width: 10, nullable: false })
+  @PrimaryColumn({ type: "int", width: 10, nullable: false })
   genreId: number;
 
   @Column({ type: "varchar", length: 100, nullable: false })

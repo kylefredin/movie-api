@@ -1,4 +1,4 @@
-import { Entity, OneToOne, Column } from "typeorm";
+import { Entity, OneToOne, Column, PrimaryColumn } from "typeorm";
 import { Gender } from "./Gender";
 import { Movie } from "./Movie";
 import { Person } from "./Person";
@@ -11,7 +11,7 @@ class MovieCast {
   @OneToOne(() => Person)
   personId: number;
 
-  @Column({ type: "varchar", length: 400 })
+  @PrimaryColumn({ type: "varchar", length: 400 })
   characterName: string;
 
   @OneToOne(() => Gender)

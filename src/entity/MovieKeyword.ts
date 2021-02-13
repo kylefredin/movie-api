@@ -1,9 +1,10 @@
-import { Entity, OneToOne } from "typeorm";
+import { Entity, OneToOne, PrimaryColumn } from "typeorm";
 import { Keyword } from "./Keyword";
 import { Movie } from "./Movie";
 
 @Entity()
 class MovieKeyword {
+  @PrimaryColumn()
   @OneToOne(() => Movie)
   movieId: number;
 
