@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Max } from "class-validator";
 
 @Entity()
 class Language {
@@ -6,9 +7,11 @@ class Language {
   languageId: number;
 
   @Column({ type: "varchar", length: 10, nullable: true })
+  @Max(10)
   languageCode: string;
 
   @Column({ type: "varchar", length: 500, nullable: true })
+  @Max(500)
   languageName: string;
 }
 

@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Max } from "class-validator";
 
 @Entity()
 class Department {
@@ -6,6 +7,7 @@ class Department {
   departmentId: number;
 
   @Column({ type: "varchar", length: 200, nullable: true })
+  @Max(200)
   departmentName: string;
 }
 

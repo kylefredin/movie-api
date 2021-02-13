@@ -1,3 +1,4 @@
+import { IsString, Max } from "class-validator";
 import { Entity, OneToOne, Column, PrimaryColumn } from "typeorm";
 import { Department } from "./Department";
 import { Movie } from "./Movie";
@@ -15,7 +16,9 @@ class MovieCrew {
   @OneToOne(() => Department)
   departmentId: number;
 
-  @Column({ type: "varchar", length: 200 })
+  @Column({ default: "", type: "varchar", length: 200 })
+  @Max(200)
+  @IsString()
   job: string;
 }
 

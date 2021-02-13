@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Max } from "class-validator";
 
 @Entity()
 class Gender {
@@ -6,6 +7,7 @@ class Gender {
   genderId: number;
 
   @Column({ type: "varchar", length: 20, nullable: true })
+  @Max(20)
   gender: string;
 }
 
