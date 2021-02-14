@@ -1,5 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToMany,
+  JoinTable,
+} from "typeorm";
 import { IsDate, IsDecimal, IsInt, IsString, Max, Min } from "class-validator";
+import Genre from "./Genre";
+import MovieCast from "./MovieCast";
+import MovieCrew from "./MovieCrew";
+import Keyword from "./Keyword";
+import ProductionCompany from "./ProductionCompany";
 
 @Entity()
 class Movie {
@@ -69,6 +80,38 @@ class Movie {
   @IsInt()
   @Min(0)
   voteCount: number;
+
+  @ManyToMany(() => MovieCast)
+  @JoinTable({ name: "movie_cast" })
+  cast: MovieCast[];
+
+  @ManyToMany(() => MovieCrew)
+  @JoinTable({ name: "movie_crew" })
+  crew: MovieCrew[];
+
+  @ManyToMany(() => Genre)
+  @JoinTable({
+    name: "movie_genre",
+    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
+    inverseJoinColumn: { name: "genreId", referencedColumnName: "genreId" },
+  })
+  genres: Genre[];
+
+  @ManyToMany(() => Keyword)
+  @JoinTable({
+    name: "movie_keywords",
+    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
+    inverseJoinColumn: { name: "keywordId", referencedColumnName: "keywordId" },
+  })
+  keywords: Keyword[];
+
+  @ManyToMany(() => ProductionCompany)
+  @JoinTable({
+    name: "movie_company",
+    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
+    inverseJoinColumn: { name: "companyId", referencedColumnName: "companyId" },
+  })
+  companies: ProductionCompany[];
 }
 
 export default Movie;

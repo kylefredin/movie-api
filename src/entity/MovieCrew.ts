@@ -1,20 +1,20 @@
 import { IsString, Max } from "class-validator";
-import { Entity, OneToOne, Column, PrimaryColumn } from "typeorm";
+import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn } from "typeorm";
 import { Department } from "./Department";
-import { Movie } from "./Movie";
 import { Person } from "./Person";
 
 @Entity()
 class MovieCrew {
-  @PrimaryColumn()
-  @OneToOne(() => Movie)
-  movieId: number;
+  @PrimaryColumn({ name: "movieId" })
+  movie: number;
 
   @OneToOne(() => Person)
-  personId: number;
+  @JoinColumn({ name: "personId" })
+  person: Person;
 
   @OneToOne(() => Department)
-  departmentId: number;
+  @JoinColumn({ name: "departmentId" })
+  department: Department;
 
   @Column({ default: "", type: "varchar", length: 200 })
   @Max(200)
