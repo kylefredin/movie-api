@@ -1,5 +1,6 @@
 import { Injectable, Inject } from "@nestjs/common";
 import { Repository } from "typeorm";
+import { PaginationDto } from "../../dto/pagination.dto";
 import { Movie } from "../../entity/Movie";
 
 @Injectable()
@@ -9,11 +10,15 @@ class MovieService {
     private movieRepository: Repository<Movie>
   ) {}
 
-  async findAll(limit: number, offset: number): Promise<Movie[]> {
+  async totalRecords(): Promise<number> {
+    return this.movieRepository.count();
+  }
+
+  async findAll(query: PaginationDto): Promise<Movie[]> {
     return this.movieRepository
       .createQueryBuilder()
-      .skip(offset)
-      .take(limit)
+      .skip(query.offset)
+      .take(query.limit)
       .getMany();
   }
 
