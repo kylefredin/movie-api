@@ -4,10 +4,8 @@ import {
   OneToOne,
   Column,
   PrimaryColumn,
-  ManyToOne,
   OneToMany,
   JoinColumn,
-  JoinTable,
 } from "typeorm";
 import { Gender } from "./Gender";
 import { Movie } from "./Movie";
