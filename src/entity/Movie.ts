@@ -6,11 +6,11 @@ import {
   JoinTable,
 } from "typeorm";
 import { IsDate, IsDecimal, IsInt, IsString, Max, Min } from "class-validator";
-import Genre from "./Genre";
-import MovieCast from "./MovieCast";
-import MovieCrew from "./MovieCrew";
-import Keyword from "./Keyword";
-import ProductionCompany from "./ProductionCompany";
+import { Genre } from "./Genre";
+import { MovieCast } from "./MovieCast";
+import { MovieCrew } from "./MovieCrew";
+import { Keyword } from "./Keyword";
+import { ProductionCompany } from "./ProductionCompany";
 
 @Entity()
 class Movie {
