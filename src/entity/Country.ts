@@ -7,17 +7,17 @@ import { IsString, Max } from "class-validator";
 @Entity()
 class Country {
   @PrimaryGeneratedColumn({ type: "int" })
-  countryId: number;
+  id: number;
 
   @Column({ default: "", type: "varchar", length: 10, nullable: true })
   @Max(10)
   @IsString()
-  countryIsoCode: string;
+  isoCode: string;
 
   @Column({ default: "", type: "varchar", length: 200, nullable: true })
   @Max(200)
   @IsString()
-  countryName: string;
+  name: string;
 }
 
 export default Country;

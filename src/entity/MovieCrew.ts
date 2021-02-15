@@ -13,14 +13,12 @@ import { Person } from "./Person";
 @Entity()
 class MovieCrew {
   @PrimaryGeneratedColumn({ type: "int" })
-  crewId: number;
+  id: number;
 
   @ManyToOne(() => Movie, (movie) => movie.crew)
-  @JoinColumn({ name: "movieId" })
   movie: Movie;
 
   @ManyToOne(() => Person)
-  @JoinColumn({ name: "personId" })
   person: Person;
 
   @ManyToOne(() => Department)

@@ -12,7 +12,7 @@ class Keyword {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  keywordId: number;
+  id: number;
 
   /**
    * The name of the keyword
@@ -22,7 +22,7 @@ class Keyword {
   @Column({ type: "varchar", length: 100, nullable: false })
   @MaxLength(100)
   @IsString()
-  keywordName: string;
+  name: string;
 }
 
 export default Keyword;

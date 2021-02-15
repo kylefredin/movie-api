@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
+import { Movie } from "./Movie";
 
 /**
  * Represents a type of Movie
@@ -12,7 +13,7 @@ class Genre {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  genreId: number;
+  id: number;
 
   /**
    * The name of the genre
@@ -22,7 +23,15 @@ class Genre {
   @Column({ type: "varchar", length: 100, nullable: false })
   @MaxLength(200)
   @IsString()
-  genreName: string;
+  name: string;
+
+  /**
+   * List of movies for the genre
+   *
+   * @type {Movie[]}
+   */
+  @ManyToMany(() => Movie, (movie) => movie.genres)
+  movies: Movie[];
 }
 
 export default Genre;

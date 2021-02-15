@@ -12,7 +12,7 @@ class Gender {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  genderId: number;
+  id: number;
 
   /**
    * The name of the gender

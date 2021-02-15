@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Country } from "./Country";
 import { Movie } from "./Movie";
 
@@ -8,11 +8,9 @@ class ProductionCountry {
   id: number;
 
   @ManyToOne(() => Movie)
-  @JoinColumn({ name: "movieId" })
-  movie: number;
+  movie: Movie;
 
   @ManyToOne(() => Country)
-  @JoinColumn({ name: "countryId" })
   country: Country;
 }
 

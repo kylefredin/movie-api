@@ -6,7 +6,7 @@ class CreateGenders implements Seeder {
     await connection
       .createQueryRunner()
       .query(
-        "INSERT INTO `gender` VALUES (0,'Unspecified'),(1,'Female'),(2,'Male')"
+        "INSERT INTO `gender` (id,gender) VALUES (0,'Unspecified'),(1,'Female'),(2,'Male')"
       );
   }
 }

@@ -4,15 +4,15 @@ import { Max } from "class-validator";
 @Entity()
 class Language {
   @PrimaryGeneratedColumn({ type: "int" })
-  languageId: number;
+  id: number;
 
   @Column({ type: "varchar", length: 10, nullable: true })
   @Max(10)
-  languageCode: string;
+  code: string;
 
   @Column({ type: "varchar", length: 500, nullable: true })
   @Max(500)
-  languageName: string;
+  name: string;
 }
 
 export default Language;

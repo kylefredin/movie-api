@@ -12,7 +12,7 @@ class Department {
    * @type {number}
    */
   @PrimaryGeneratedColumn({ type: "int" })
-  departmentId: number;
+  id: number;
 
   /**
    * The name of the department
@@ -22,7 +22,7 @@ class Department {
   @Column({ type: "varchar", length: 200, nullable: false })
   @MaxLength(200)
   @IsString()
-  departmentName: string;
+  name: string;
 }
 
 export default Department;

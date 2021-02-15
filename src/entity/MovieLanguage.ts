@@ -1,10 +1,4 @@
-import {
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Language } from "./Language";
 import { LanguageRole } from "./LanguageRole";
 import { Movie } from "./Movie";
@@ -15,7 +9,6 @@ class MovieLanguage {
   id: number;
 
   @ManyToOne(() => Movie)
-  @JoinColumn({ name: "movieId" })
   movie: Movie;
 
   @ManyToOne(() => Language)

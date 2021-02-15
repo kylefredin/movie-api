@@ -15,7 +15,7 @@ import { ProductionCompany } from "./ProductionCompany";
 @Entity()
 class Movie {
   @PrimaryGeneratedColumn({ type: "int" })
-  movieId: number;
+  id: number;
 
   @Column({ default: "", length: 1000, type: "varchar", nullable: true })
   @Max(1000)
@@ -87,28 +87,16 @@ class Movie {
   @ManyToMany(() => MovieCrew, (movieCrew) => movieCrew.movie)
   crew: MovieCrew[];
 
-  @ManyToMany(() => Genre)
-  @JoinTable({
-    name: "movie_genre",
-    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
-    inverseJoinColumn: { name: "genreId", referencedColumnName: "genreId" },
-  })
+  @ManyToMany(() => Genre, (genre) => genre.movies)
+  @JoinTable({ name: "movie_genre" })
   genres: Genre[];
 
   @ManyToMany(() => Keyword)
-  @JoinTable({
-    name: "movie_keywords",
-    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
-    inverseJoinColumn: { name: "keywordId", referencedColumnName: "keywordId" },
-  })
+  @JoinTable({ name: "movie_keywords" })
   keywords: Keyword[];
 
   @ManyToMany(() => ProductionCompany)
-  @JoinTable({
-    name: "movie_company",
-    joinColumn: { name: "movieId", referencedColumnName: "movieId" },
-    inverseJoinColumn: { name: "companyId", referencedColumnName: "companyId" },
-  })
+  @JoinTable({ name: "movie_company" })
   companies: ProductionCompany[];
 }
 
