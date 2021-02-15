@@ -1,5 +1,6 @@
 import { Injectable, Inject } from "@nestjs/common";
 import { Repository } from "typeorm";
+import { PaginationDto } from "../../dto/pagination.dto";
 import { ProductionCompany } from "../../entity/ProductionCompany";
 
 @Injectable()
@@ -9,8 +10,20 @@ class CompanyService {
     private companyRepository: Repository<ProductionCompany>
   ) {}
 
-  async findAll(): Promise<ProductionCompany[]> {
-    return this.companyRepository.find();
+  async totalRecords(): Promise<number> {
+    return this.companyRepository.count();
+  }
+
+  async findAll(query: PaginationDto): Promise<ProductionCompany[]> {
+    return this.companyRepository
+      .createQueryBuilder()
+      .skip(query.offset)
+      .take(query.limit)
+      .getMany();
+  }
+
+  async findOne(id: number): Promise<ProductionCompany> {
+    return this.companyRepository.findOne(id);
   }
 }
 
