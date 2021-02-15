@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToMany } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
+import Movie from "./Movie";
 
 /**
  * Represents a word or phrase that can describe/group Movies
@@ -23,6 +24,14 @@ class Keyword {
   @MaxLength(100)
   @IsString()
   name: string;
+
+  /**
+   * List of movies for the keyword
+   *
+   * @type {Movie[]}
+   */
+  @ManyToMany(() => Movie, (movie) => movie.keywords)
+  movies: Movie[];
 }
 
 export default Keyword;

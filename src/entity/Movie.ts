@@ -91,11 +91,11 @@ class Movie {
   @JoinTable({ name: "movie_genre" })
   genres: Genre[];
 
-  @ManyToMany(() => Keyword)
+  @ManyToMany(() => Keyword, (keyword) => keyword.movies)
   @JoinTable({ name: "movie_keywords" })
   keywords: Keyword[];
 
-  @ManyToMany(() => ProductionCompany)
+  @ManyToMany(() => ProductionCompany, (company) => company.movies)
   @JoinTable({ name: "movie_company" })
   companies: ProductionCompany[];
 }
