@@ -1,7 +1,7 @@
 import { Factory, Seeder } from "typeorm-seeding";
 import { Connection } from "typeorm";
 
-class CreateMovieCast4 implements Seeder {
+class CreateMovieCompany implements Seeder {
   public async run(factory: Factory, connection: Connection): Promise<any> {
     await connection
       .createQueryRunner()
@@ -11,6 +11,6 @@ class CreateMovieCast4 implements Seeder {
   }
 }
 
-export default CreateMovieCast4;
+export default CreateMovieCompany;
 
-export { CreateMovieCast4 };
+export { CreateMovieCompany };
