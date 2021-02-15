@@ -1,13 +1,17 @@
-import { Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Country } from "./Country";
 import { Movie } from "./Movie";
 
 @Entity()
 class ProductionCountry {
-  @PrimaryColumn({ name: "movieId" })
+  @PrimaryGeneratedColumn({ type: "int" })
+  id: number;
+
+  @ManyToOne(() => Movie)
+  @JoinColumn({ name: "movieId" })
   movie: number;
 
-  @OneToOne(() => Country)
+  @ManyToOne(() => Country)
   @JoinColumn({ name: "countryId" })
   country: Country;
 }

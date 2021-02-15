@@ -1,18 +1,28 @@
-import { Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import {
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  PrimaryGeneratedColumn,
+} from "typeorm";
 import { Language } from "./Language";
 import { LanguageRole } from "./LanguageRole";
 import { Movie } from "./Movie";
 
 @Entity()
 class MovieLanguage {
-  @PrimaryColumn({ name: "movieId" })
-  movieId: number;
+  @PrimaryGeneratedColumn({ type: "int" })
+  id: number;
 
-  @OneToOne(() => Language)
+  @ManyToOne(() => Movie)
+  @JoinColumn({ name: "movieId" })
+  movie: Movie;
+
+  @ManyToOne(() => Language)
   @JoinColumn({ name: "languageId" })
   language: Language;
 
-  @OneToOne(() => LanguageRole)
+  @ManyToOne(() => LanguageRole)
   @JoinColumn({ name: "languageRoleId" })
   languageRole: LanguageRole;
 }

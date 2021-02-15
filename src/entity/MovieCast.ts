@@ -1,11 +1,10 @@
 import { IsInt, IsString, Max, Min } from "class-validator";
 import {
   Entity,
-  OneToOne,
   Column,
-  PrimaryColumn,
   JoinColumn,
   ManyToOne,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { Gender } from "./Gender";
 import { Movie } from "./Movie";
@@ -13,20 +12,23 @@ import { Person } from "./Person";
 
 @Entity()
 class MovieCast {
+  @PrimaryGeneratedColumn({ type: "int" })
+  castId: number;
+
   @ManyToOne(() => Movie, (movie) => movie.cast)
   @JoinColumn({ name: "movieId" })
   movie: Movie;
 
-  @OneToOne(() => Person)
+  @ManyToOne(() => Person)
   @JoinColumn({ name: "personId" })
   person: Person;
 
-  @PrimaryColumn({ default: "", type: "varchar", length: 400, nullable: false })
+  @Column({ default: "", type: "varchar", length: 400, nullable: false })
   @Max(400)
   @IsString()
   characterName: string;
 
-  @OneToOne(() => Gender)
+  @ManyToOne(() => Gender)
   @JoinColumn({ name: "genderId" })
   gender: Gender;
 
