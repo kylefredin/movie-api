@@ -81,12 +81,10 @@ class Movie {
   @Min(0)
   voteCount: number;
 
-  @ManyToMany(() => MovieCast)
-  @JoinTable({ name: "movie_cast" })
+  @ManyToMany(() => MovieCast, (movieCast) => movieCast.movie)
   cast: MovieCast[];
 
-  @ManyToMany(() => MovieCrew)
-  @JoinTable({ name: "movie_crew" })
+  @ManyToMany(() => MovieCrew, (movieCrew) => movieCrew.movie)
   crew: MovieCrew[];
 
   @ManyToMany(() => Genre)

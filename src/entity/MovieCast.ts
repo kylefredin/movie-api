@@ -4,8 +4,8 @@ import {
   OneToOne,
   Column,
   PrimaryColumn,
-  OneToMany,
   JoinColumn,
+  ManyToOne,
 } from "typeorm";
 import { Gender } from "./Gender";
 import { Movie } from "./Movie";
@@ -13,7 +13,7 @@ import { Person } from "./Person";
 
 @Entity()
 class MovieCast {
-  @OneToMany(() => Movie, (movie) => movie.cast)
+  @ManyToOne(() => Movie, (movie) => movie.cast)
   @JoinColumn({ name: "movieId" })
   movie: Movie;
 
@@ -21,7 +21,7 @@ class MovieCast {
   @JoinColumn({ name: "personId" })
   person: Person;
 
-  @PrimaryColumn({ default: "", type: "varchar", length: 400 })
+  @PrimaryColumn({ default: "", type: "varchar", length: 400, nullable: false })
   @Max(400)
   @IsString()
   characterName: string;

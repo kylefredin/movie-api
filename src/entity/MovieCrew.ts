@@ -1,12 +1,20 @@
 import { IsString, Max } from "class-validator";
-import { Entity, OneToOne, Column, PrimaryColumn, JoinColumn } from "typeorm";
+import {
+  Entity,
+  OneToOne,
+  PrimaryColumn,
+  JoinColumn,
+  ManyToOne,
+} from "typeorm";
 import { Department } from "./Department";
+import { Movie } from "./Movie";
 import { Person } from "./Person";
 
 @Entity()
 class MovieCrew {
-  @PrimaryColumn({ name: "movieId" })
-  movie: number;
+  @ManyToOne(() => Movie, (movie) => movie.crew)
+  @JoinColumn({ name: "movieId" })
+  movie: Movie;
 
   @OneToOne(() => Person)
   @JoinColumn({ name: "personId" })
@@ -16,7 +24,7 @@ class MovieCrew {
   @JoinColumn({ name: "departmentId" })
   department: Department;
 
-  @Column({ default: "", type: "varchar", length: 200 })
+  @PrimaryColumn({ default: "", type: "varchar", length: 200 })
   @Max(200)
   @IsString()
   job: string;
