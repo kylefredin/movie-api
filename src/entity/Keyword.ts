@@ -1,13 +1,27 @@
 import { Entity, Column, PrimaryColumn } from "typeorm";
-import { Max } from "class-validator";
+import { IsString, MaxLength } from "class-validator";
 
+/**
+ * Represents a word or phrase that can describe/group Movies
+ */
 @Entity()
 class Keyword {
+  /**
+   * The id of the keyword
+   *
+   * @type {number}
+   */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
   keywordId: number;
 
-  @Column({ type: "varchar", length: 100, nullable: true })
-  @Max(100)
+  /**
+   * The name of the keyword
+   *
+   * @type {string}
+   */
+  @Column({ type: "varchar", length: 100, nullable: false })
+  @MaxLength(100)
+  @IsString()
   keywordName: string;
 }
 

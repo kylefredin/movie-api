@@ -1,13 +1,27 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { Max } from "class-validator";
+import { IsString, MaxLength } from "class-validator";
 
+/**
+ * Represents a logical grouping of MovieCrew for a Movie
+ */
 @Entity()
 class Department {
+  /**
+   * The id of the department
+   *
+   * @type {number}
+   */
   @PrimaryGeneratedColumn({ type: "int" })
   departmentId: number;
 
-  @Column({ type: "varchar", length: 200, nullable: true })
-  @Max(200)
+  /**
+   * The name of the department
+   *
+   * @type {string}
+   */
+  @Column({ type: "varchar", length: 200, nullable: false })
+  @MaxLength(200)
+  @IsString()
   departmentName: string;
 }
 

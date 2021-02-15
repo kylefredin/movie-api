@@ -1,6 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { IsString, Max } from "class-validator";
 
+/**
+ * Represents a country on planet Earth
+ */
 @Entity()
 class Country {
   @PrimaryGeneratedColumn({ type: "int" })
