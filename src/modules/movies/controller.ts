@@ -30,13 +30,15 @@ class MovieController {
 
   @Get(":id")
   async findOne(@Param("id") id: number): Promise<MovieDto> {
-    const response = new MovieDto();
+    const movie = await this.movieService.findOne(id);
 
-    response.movie = await this.movieService.findOne(id);
-
-    if (!response.movie) {
+    if (!movie) {
       throw new HttpException("Movie not found", HttpStatus.NOT_FOUND);
     }
+
+    const response = new MovieDto();
+
+    response.movie = movie;
 
     return response;
   }
