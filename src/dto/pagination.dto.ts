@@ -15,6 +15,7 @@ class PaginationDto {
 
   @Transform(({ value }) => (isFinite(value) ? Number(value) : value))
   @IsInt()
+  @Min(1)
   @Max(maximumPerPage)
   perPage: number = defaultPerPage;
 
