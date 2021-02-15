@@ -24,7 +24,7 @@ class MovieService {
 
   async findOne(id: number): Promise<Movie> {
     return this.movieRepository.findOne(id, {
-      relations: ["cast", "crew", "genres"],
+      relations: ["genres", "keywords", "companies"],
     });
   }
 }
