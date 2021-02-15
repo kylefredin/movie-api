@@ -6,10 +6,9 @@ import {
   Param,
   Query,
 } from "@nestjs/common";
-import CountryDto from "../../dto/country.dto";
-import CountriesDto from "../../dto/movies.dto";
+import { CountryDto } from "../../dto/country.dto";
+import { CountriesDto } from "../../dto/countries.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
-import { Country } from "../../entity/Country";
 import { CountryService } from "./service";
 
 @Controller("countries")
