@@ -4,6 +4,7 @@
   "description": "Yet another Movie API",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
@@ -16,6 +17,7 @@
   "license": "ISC",
   "devDependencies": {
     "@nestjs/testing": "~7.6.12",
+    "@types/faker": "~5.1.6",
     "@types/jest": "~26.0.20",
     "@types/node": "~14.14.28",
     "jest": "~26.6.3",
