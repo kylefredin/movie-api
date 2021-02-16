@@ -25,7 +25,28 @@ describe("CountryController", () => {
   });
 
   describe("findAll", () => {
-    it("should return an array of countries", async () => {
+    it("should return an empty response if repository is empty", async () => {
+      const serviceResponse = [];
+
+      jest
+        .spyOn(countryService, "totalRecords")
+        .mockResolvedValue(serviceResponse.length);
+
+      jest.spyOn(countryService, "findAll").mockResolvedValue(serviceResponse);
+
+      const query = new PaginationDto();
+
+      const response = new CountriesDto();
+      response.countries = serviceResponse;
+
+      response.meta.totalRecords = 0;
+      response.meta.currentPage = query.page;
+      response.meta.perPage = query.perPage;
+
+      expect(await countryController.findAll(query)).toStrictEqual(response);
+    });
+
+    it("should return countries in the repository", async () => {
       const serviceResponse = [{ id: 1, isoCode: "AB", name: "Test" }];
 
       jest
