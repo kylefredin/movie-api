@@ -45,7 +45,7 @@ class CountryService {
    * @param {number} id
    * @return {Promise<Country>}
    */
-  async findOne(id: number): Promise<Country> {
+  async findOne(id: number): Promise<Country | undefined> {
     return this.countryRepository.findOne(id, {
       relations: ["movies"],
     });
@@ -75,7 +75,9 @@ class CountryService {
       .where("id = :id", { id })
       .execute();
 
-    return this.countryRepository.findOne(id, { relations: ["movies"] });
+    return (this.countryRepository.findOne(id, {
+      relations: ["movies"],
+    }) as unknown) as Country;
   }
 }
 

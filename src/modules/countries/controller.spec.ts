@@ -1,6 +1,7 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { CountriesDto } from "../../dto/countries.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
+import Country from "../../entity/Country";
 import { CountryController } from "./controller";
 import { CountryService } from "./service";
 
@@ -26,7 +27,7 @@ describe("CountryController", () => {
 
   describe("findAll", () => {
     it("should return an empty response if repository is empty", async () => {
-      const serviceResponse = [];
+      const serviceResponse: Country[] = [];
 
       jest
         .spyOn(countryService, "totalRecords")
@@ -47,7 +48,9 @@ describe("CountryController", () => {
     });
 
     it("should return countries in the repository", async () => {
-      const serviceResponse = [{ id: 1, isoCode: "AB", name: "Test" }];
+      const serviceResponse: Country[] = [
+        { id: 1, isoCode: "AB", name: "Test" },
+      ];
 
       jest
         .spyOn(countryService, "totalRecords")

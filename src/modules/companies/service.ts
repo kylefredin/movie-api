@@ -22,7 +22,7 @@ class CompanyService {
       .getMany();
   }
 
-  async findOne(id: number): Promise<ProductionCompany> {
+  async findOne(id: number): Promise<ProductionCompany | undefined> {
     return this.companyRepository.findOne(id);
   }
 }

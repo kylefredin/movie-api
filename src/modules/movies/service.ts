@@ -22,7 +22,7 @@ class MovieService {
       .getMany();
   }
 
-  async findOne(id: number): Promise<Movie> {
+  async findOne(id: number): Promise<Movie | undefined> {
     return this.movieRepository.findOne(id, {
       relations: ["genres", "keywords", "companies"],
     });

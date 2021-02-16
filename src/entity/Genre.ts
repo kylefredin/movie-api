@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryColumn, ManyToOne, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryColumn, ManyToMany } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
 import { Movie } from "./Movie";
 
