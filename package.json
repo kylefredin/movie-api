@@ -4,7 +4,7 @@
   "description": "Yet another Movie API",
   "main": "index.js",
   "scripts": {
-    "test": "jest --detectOpenHandles",
+    "test": "jest",
     "schema:drop": "ts-node ./node_modules/typeorm/cli.js schema:drop",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
