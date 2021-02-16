@@ -3,8 +3,6 @@ import { CountriesDto } from "../../dto/countries.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { CountryController } from "./controller";
 import { CountryService } from "./service";
-import { countryProviders } from "./provider";
-import { DatabaseModule } from "../../database/module";
 
 describe("CountryController", () => {
   let countryController: CountryController;
@@ -12,9 +10,14 @@ describe("CountryController", () => {
 
   beforeEach(async () => {
     let moduleRef: TestingModule = await Test.createTestingModule({
-      imports: [DatabaseModule],
       controllers: [CountryController],
-      providers: [...countryProviders, CountryService],
+      providers: [
+        {
+          provide: "COUNTRY_REPOSITORY",
+          useFactory: () => {},
+        },
+        CountryService,
+      ],
     }).compile();
 
     countryService = moduleRef.get<CountryService>(CountryService);
@@ -40,7 +43,7 @@ describe("CountryController", () => {
       response.meta.currentPage = query.page;
       response.meta.perPage = query.perPage;
 
-      expect(await countryController.findAll(query)).toBe(response);
+      expect(await countryController.findAll(query)).toStrictEqual(response);
     });
   });
 });
