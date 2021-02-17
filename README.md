@@ -3,9 +3,17 @@
 Steps to run this project:
 
 1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm run seed:run` to seed the database
-4. Run `npm start` command to start the server
+2. Run `npm run seed:run` to seed the database
+3. Run `npm start` command to start the server
+
+## Testing
+
+- `npm run test`
+- `npm run test:coverage`
+
+## Building
+
+- `npm run build`
 
 ## Links
 
