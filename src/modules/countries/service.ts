@@ -40,7 +40,7 @@ class CountryService {
   }
 
   /**
-   * Returns a country by identifier
+   * Returns the country using the provided identifier
    *
    * @param {number} id
    * @return {Promise<Country>}

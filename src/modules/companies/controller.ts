@@ -11,10 +11,22 @@ import { ProductionCompaniesDto } from "../../dto/productionCompanies.dto";
 import { ProductionCompanyDto } from "../../dto/productionCompany.dto";
 import { CompanyService } from "./service";
 
+/**
+ * API controller for Production Company routes
+ */
 @Controller("companies")
 class CompanyController {
+  /**
+   * @param {CompanyService} companyService
+   */
   constructor(private companyService: CompanyService) {}
 
+  /**
+   * GET /companies route handler
+   *
+   * @param {PaginationDto} query
+   * @return {Promise<ProductionCompaniesDto>}
+   */
   @Get()
   async findAll(
     @Query() query: PaginationDto
@@ -30,6 +42,12 @@ class CompanyController {
     return response;
   }
 
+  /**
+   * GET /companies/:id route handler
+   *
+   * @param {number} id
+   * @return {Promise<ProductionCompanyDto>}
+   */
   @Get(":id")
   async findOne(@Param("id") id: number): Promise<ProductionCompanyDto> {
     const company = await this.companyService.findOne(id);
