@@ -10,7 +10,7 @@ describe("CountryController", () => {
   let countryService: CountryService;
 
   beforeEach(async () => {
-    let moduleRef: TestingModule = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       controllers: [CountryController],
       providers: [
         {

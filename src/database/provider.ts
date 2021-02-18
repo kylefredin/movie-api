@@ -12,7 +12,7 @@ const databaseProviders = [
   {
     provide: "DATABASE_CONNECTION",
     useFactory: async () =>
-      await createConnection({
+      createConnection({
         type: "mysql",
         host: DATABASE_HOST,
         port: Number(DATABASE_PORT),
@@ -21,7 +21,7 @@ const databaseProviders = [
         database: DATABASE_NAME,
         entities: [__dirname + "/../entity/*.ts"],
         synchronize: true,
-      }),
+      }).then((connection) => connection),
   },
 ];
 
