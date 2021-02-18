@@ -1,5 +1,12 @@
 # Movie API
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/en/)
+- [Git](https://git-scm.com/)
+
+## Getting Started
+
 Steps to run this project:
 
 1. Run `npm i` command
@@ -21,9 +28,16 @@ Steps to run this project:
 - `npm run lint:ts`
 - `npm run lint:format`
 
-## Links
+## API Links
 
 - [API Documentation](http://localhost:3000/api)
 - [Countries API](http://localhost:3000/countries)
 - [Companies API](http://localhost:3000/companies)
 - [Movies API](http://localhost:3000/movies)
+
+## Documentation
+
+- [NestJS](https://docs.nestjs.com/)
+- [TypeORM](https://github.com/typeorm/typeorm)
+- [Jest](https://jestjs.io/docs/en/getting-started)
+- [Docker Compose](https://docs.docker.com/compose/)
