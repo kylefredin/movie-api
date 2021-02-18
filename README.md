@@ -15,6 +15,12 @@ Steps to run this project:
 
 - `npm run build`
 
+## Linting
+
+- `npm run lint`
+- `npm run lint:ts`
+- `npm run lint:format`
+
 ## Links
 
 - [API Documentation](http://localhost:3000/api)
