@@ -1,12 +1,7 @@
 {
   "compilerOptions": {},
   "include": [
-    "src/database/*.ts",
-    "src/database/factories/*.ts",
-    "src/dto/*.ts",
-    "src/entity/*.ts",
-    "src/modules/**/*.ts",
-    "src/*.ts",
+    "src/**/*.ts",
     ".eslintrc.json",
     "jest.config.js",
     "ormconfig.json",
