@@ -2,15 +2,16 @@ import { URL } from "url";
 import { Injectable } from "@nestjs/common";
 import { BASE_URL } from "../../constants";
 import { LinksDto } from "../../dto/links.dto";
+import { getLinksDtoRequest } from "./getLinksDtoRequest";
 
 @Injectable()
 class UrlService {
-  getLinksDto(
-    path: string,
-    totalPages: number,
-    currentPage: number,
-    perPage: number,
-  ): LinksDto {
+  getLinksDto({
+    path,
+    totalPages,
+    currentPage,
+    perPage,
+  }: getLinksDtoRequest): LinksDto {
     const links = new LinksDto();
 
     if (totalPages < 2) {

@@ -47,12 +47,12 @@ class CountryController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto(
-      "/countries",
-      totalRecords,
-      query.page,
-      query.perPage,
-    );
+    response.links = this.urlService.getLinksDto({
+      path: "/countries",
+      totalPages: totalRecords,
+      currentPage: query.page,
+      perPage: query.perPage,
+    });
 
     return response;
   }

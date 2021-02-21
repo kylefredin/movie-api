@@ -45,12 +45,12 @@ class CompanyController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto(
-      "/companies",
-      totalRecords,
-      query.page,
-      query.perPage,
-    );
+    response.links = this.urlService.getLinksDto({
+      path: "/companies",
+      totalPages: totalRecords,
+      currentPage: query.page,
+      perPage: query.perPage,
+    });
 
     return response;
   }

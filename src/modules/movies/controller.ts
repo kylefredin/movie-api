@@ -47,12 +47,12 @@ class MovieController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto(
-      "/movies",
-      totalRecords,
-      query.page,
-      query.perPage,
-    );
+    response.links = this.urlService.getLinksDto({
+      path: "/movies",
+      totalPages: totalRecords,
+      currentPage: query.page,
+      perPage: query.perPage,
+    });
 
     return response;
   }
