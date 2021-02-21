@@ -4,7 +4,7 @@
   "description": "Yet another Movie API",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "nest build",
     "lint": "run-p lint:* --aggregate-output --continue-on-error",
     "lint:ts": "eslint . --ext .js,.ts,.json",
     "lint:format": "prettier --check .",
@@ -14,11 +14,12 @@
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
     "seed:config": "ts-node ./node_modules/typeorm-seeding/dist/cli.js config",
     "seed:run": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed",
-    "start": "ts-node src/main.ts"
+    "start": "nest start"
   },
   "author": "Kyle Fredin <kylefredin@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "@nestjs/cli": "^7.5.5",
     "@nestjs/testing": "~7.6.12",
     "@types/faker": "~5.1.6",
     "@types/jest": "~26.0.20",

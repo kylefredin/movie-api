@@ -19,7 +19,7 @@ const databaseProviders = [
         username: DATABASE_USERNAME,
         password: DATABASE_PASSWORD,
         database: DATABASE_NAME,
-        entities: [__dirname + "/../entity/*.ts"],
+        entities: [__dirname + "/../entity/*.js"],
         synchronize: true,
       }).then((connection) => connection),
   },
