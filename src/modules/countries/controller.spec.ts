@@ -1,7 +1,8 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { CountriesDto } from "../../dto/countries.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
-import Country from "../../entity/Country";
+import { Country } from "../../entity/Country";
+import { UrlService } from "../url/service";
 import { CountryController } from "./controller";
 import { CountryService } from "./service";
 
@@ -18,6 +19,7 @@ describe("CountryController", () => {
           useFactory: () => {},
         },
         CountryService,
+        UrlService,
       ],
     }).compile();
 
