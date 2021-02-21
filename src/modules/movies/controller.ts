@@ -47,7 +47,7 @@ class MovieController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.createLinks(
+    response.links = this.urlService.getLinksDto(
       "/movies",
       totalRecords,
       query.page,

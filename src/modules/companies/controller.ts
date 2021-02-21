@@ -45,7 +45,7 @@ class CompanyController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.createLinks(
+    response.links = this.urlService.getLinksDto(
       "/companies",
       totalRecords,
       query.page,

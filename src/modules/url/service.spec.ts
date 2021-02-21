@@ -2,11 +2,11 @@ import { LinksDto } from "src/dto/links.dto";
 import { UrlService } from "./service";
 
 describe("UrlService", () => {
-  describe("createLinks method", () => {
+  describe("getLinksDto method", () => {
     it("should return empty links by default", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.createLinks("/test", 0, 0, 0);
+      const links: LinksDto = service.getLinksDto("/test", 0, 0, 0);
 
       expect(links.first).toBeNull();
       expect(links.last).toBeNull();
@@ -17,7 +17,7 @@ describe("UrlService", () => {
     it("should return correct next and last links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.createLinks("/test", 2, 1, 10);
+      const links: LinksDto = service.getLinksDto("/test", 2, 1, 10);
 
       expect(links.first).toBeNull();
       expect(links.last).toStrictEqual(
@@ -32,7 +32,7 @@ describe("UrlService", () => {
     it("should return correct first and prev links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.createLinks("/test", 2, 2, 10);
+      const links: LinksDto = service.getLinksDto("/test", 2, 2, 10);
 
       expect(links.first).toStrictEqual(
         "http://localhost:3000/test?page=1&perPage=10",
@@ -47,7 +47,7 @@ describe("UrlService", () => {
     it("should return correct links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.createLinks("/test", 5, 2, 10);
+      const links: LinksDto = service.getLinksDto("/test", 5, 2, 10);
 
       expect(links.first).toStrictEqual(
         "http://localhost:3000/test?page=1&perPage=10",

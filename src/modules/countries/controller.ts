@@ -47,7 +47,7 @@ class CountryController {
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.createLinks(
+    response.links = this.urlService.getLinksDto(
       "/countries",
       totalRecords,
       query.page,

@@ -5,7 +5,7 @@ import { LinksDto } from "../../dto/links.dto";
 
 @Injectable()
 class UrlService {
-  createLinks(
+  getLinksDto(
     path: string,
     totalPages: number,
     currentPage: number,
