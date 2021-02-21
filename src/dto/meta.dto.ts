@@ -1,4 +1,4 @@
-import { IsInt, Max, Min } from "class-validator";
+import { IsBoolean, IsInt, Max, Min } from "class-validator";
 
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE, MAXIMUM_PER_PAGE } from "../constants";
 
@@ -51,6 +51,26 @@ class MetaDto {
     }
 
     return Math.ceil(this.totalRecords / this.perPage);
+  }
+
+  /**
+   * Returns true if this is the first page
+   *
+   * @type {boolean}
+   */
+  @IsBoolean()
+  get isFirstPage(): boolean {
+    return this.currentPage === 1;
+  }
+
+  /**
+   * Returns true if this is the last page
+   *
+   * @type {boolean}
+   */
+  @IsBoolean()
+  get isLastPage(): boolean {
+    return this.currentPage === this.totalPages;
   }
 }
 
