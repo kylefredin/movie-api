@@ -42,3 +42,25 @@ Steps to run this project:
 - [TypeORM](https://github.com/typeorm/typeorm)
 - [Jest](https://jestjs.io/docs/en/getting-started)
 - [Docker Compose](https://docs.docker.com/compose/)
+
+## VSCode Debugger
+
+```
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "address": "0.0.0.0",
+      "localRoot": "${workspaceFolder}",
+      "name": "Debug: movie-api",
+      "remoteRoot": "/usr/src/app",
+      "request": "attach",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"],
+      "type": "pwa-node"
+    }
+  ]
+}
+
+```
