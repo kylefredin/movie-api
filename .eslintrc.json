@@ -135,8 +135,6 @@
     "@typescript-eslint/space-before-function-paren": "off"
   },
 
-  "ignorePatterns": ["webpack*.js"],
-
   "overrides": [
     {
       "files": ["*.json"],

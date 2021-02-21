@@ -1,5 +1,3 @@
-declare const module: any;
-
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import {
@@ -22,7 +20,6 @@ class Bootstrap {
   public setup(app: INestApplication): void {
     this.setupGlobalPipe(app);
     this.setupSwagger(app);
-    this.setupHotModule(app);
   }
 
   /**
@@ -52,21 +49,6 @@ class Bootstrap {
     const document = SwaggerModule.createDocument(app, config);
 
     SwaggerModule.setup(API_DOCUMENTATION_PATH, app, document);
-  }
-
-  /**
-   * @param {INestApplication} app
-   * @return {void}
-   */
-  private setupHotModule(app: INestApplication): void {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    if (module.hot) {
-      //eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
-      module.hot.accept();
-
-      //eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-call
-      module.hot.dispose(async () => app.close());
-    }
   }
 }
 
