@@ -18,6 +18,10 @@ Steps to run this project:
 
 ## Seeding
 
+- `npm run seed:run` to seed the database
+- `npm run seed:drop` to drop the database
+- `npm run seed:sync` to sync the database schema
+
 ### Known Issue
 
 - For some reason the seeder script will hang after running 10 seeder files.
