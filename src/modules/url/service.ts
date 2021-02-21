@@ -1,7 +1,7 @@
 import { URL } from "url";
 import { Injectable } from "@nestjs/common";
-import { BASE_URL } from "src/constants";
-import { LinksDto } from "src/dto/links.dto";
+import { BASE_URL } from "../../constants";
+import { LinksDto } from "../../dto/links.dto";
 
 @Injectable()
 class UrlService {
@@ -22,7 +22,7 @@ class UrlService {
       links.first = this.getFirstLink(path, perPage);
     }
 
-    if (currentPage !== this.getLastPage(totalPages, perPage)) {
+    if (currentPage !== totalPages) {
       links.next = this.getNextLink(path, currentPage, perPage);
       links.last = this.getLastLink(path, totalPages, perPage);
     }
@@ -60,18 +60,10 @@ class UrlService {
   getLastLink(path: string, totalPages: number, perPage: number): string {
     const last = new URL(path, BASE_URL);
 
-    last.searchParams.append(
-      "page",
-      String(this.getLastPage(totalPages, perPage)),
-    );
-
+    last.searchParams.append("page", String(totalPages));
     last.searchParams.append("perPage", String(perPage));
 
     return last.toString();
-  }
-
-  getLastPage(totalPages: number, perPage: number): number {
-    return Math.floor(totalPages / perPage);
   }
 }
 
