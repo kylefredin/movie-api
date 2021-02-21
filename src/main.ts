@@ -1,34 +1,19 @@
-import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
 
 import "reflect-metadata";
 
 import { SERVER_PORT } from "./constants";
+import { Bootstrap } from "./bootstrap";
 
-async function bootstrap() {
+async function start() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      transformOptions: { enableImplicitConversion: true },
-    })
-  );
+  const bootstrap = new Bootstrap();
 
-  const config = new DocumentBuilder()
-    .setTitle("Movies")
-    .setDescription("The Movie API")
-    .setVersion("1.0")
-    .addTag("movies")
-    .build();
-
-  const document = SwaggerModule.createDocument(app, config);
-
-  SwaggerModule.setup("api", app, document);
+  bootstrap.setup(app);
 
   await app.listen(Number(SERVER_PORT));
 }
 
-bootstrap();
+start();
