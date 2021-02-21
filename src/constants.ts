@@ -1,4 +1,8 @@
 const {
+  API_DESCRIPTION = "The Movie API",
+  API_DOCUMENTATION_PATH = "api",
+  API_TITLE = "Movies",
+  API_VERSION = "1.0",
   DATABASE_HOST = "localhost",
   DATABASE_PORT = 3306,
   DATABASE_USERNAME = "test",
@@ -11,6 +15,10 @@ const {
 } = process.env;
 
 export {
+  API_DESCRIPTION,
+  API_DOCUMENTATION_PATH,
+  API_TITLE,
+  API_VERSION,
   DATABASE_HOST,
   DATABASE_PORT,
   DATABASE_USERNAME,
