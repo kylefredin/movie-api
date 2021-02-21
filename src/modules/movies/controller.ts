@@ -9,6 +9,7 @@ import {
   Put,
   Query,
 } from "@nestjs/common";
+import { UrlService } from "../url/service";
 import { MovieDto } from "../../dto/movie.dto";
 import { MoviesDto } from "../../dto/movies.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
@@ -23,7 +24,10 @@ class MovieController {
   /**
    * @param {MovieService} movieService
    */
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private urlService: UrlService,
+  ) {}
 
   /**
    * GET /movies route handler
@@ -37,9 +41,18 @@ class MovieController {
 
     response.movies = await this.movieService.findAll(query);
 
-    response.meta.totalRecords = await this.movieService.totalRecords();
+    const totalRecords = await this.movieService.totalRecords();
+
+    response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
+
+    response.links = this.urlService.createLinks(
+      "/movies",
+      totalRecords,
+      query.page,
+      query.perPage,
+    );
 
     return response;
   }
@@ -91,7 +104,7 @@ class MovieController {
   @Put(":id")
   async update(
     @Param("id") id: number,
-    @Body() body: Movie
+    @Body() body: Movie,
   ): Promise<MovieDto> {
     const movie = await this.movieService.findOne(id);
 

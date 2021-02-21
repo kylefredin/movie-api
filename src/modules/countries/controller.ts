@@ -13,7 +13,8 @@ import { CountryDto } from "../../dto/country.dto";
 import { CountriesDto } from "../../dto/countries.dto";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { CountryService } from "./service";
-import Country from "../../entity/Country";
+import { Country } from "../../entity/Country";
+import { UrlService } from "../url/service";
 
 /**
  * API controller for Country routes
@@ -23,7 +24,10 @@ class CountryController {
   /**
    * @param {CountryService} countryService
    */
-  constructor(private countryService: CountryService) {}
+  constructor(
+    private countryService: CountryService,
+    private urlService: UrlService,
+  ) {}
 
   /**
    * GET /countries route handler
@@ -37,9 +41,18 @@ class CountryController {
 
     response.countries = await this.countryService.findAll(query);
 
-    response.meta.totalRecords = await this.countryService.totalRecords();
+    const totalRecords = await this.countryService.totalRecords();
+
+    response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
+
+    response.links = this.urlService.createLinks(
+      "/countries",
+      totalRecords,
+      query.page,
+      query.perPage,
+    );
 
     return response;
   }
@@ -91,7 +104,7 @@ class CountryController {
   @Put(":id")
   async update(
     @Param("id") id: number,
-    @Body() body: Country
+    @Body() body: Country,
   ): Promise<CountryDto> {
     const country = await this.countryService.findOne(id);
 

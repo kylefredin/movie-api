@@ -3,11 +3,12 @@ import { CompanyController } from "./controller";
 import { CompanyService } from "./service";
 import { companyProviders } from "./provider";
 import { DatabaseModule } from "../../database/module";
+import { UrlService } from "../url/service";
 
 @Module({
   imports: [DatabaseModule],
   controllers: [CompanyController],
-  providers: [...companyProviders, CompanyService],
+  providers: [...companyProviders, CompanyService, UrlService],
 })
 class CompanyModule {}
 

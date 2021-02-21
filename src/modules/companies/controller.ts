@@ -6,6 +6,7 @@ import {
   Param,
   Query,
 } from "@nestjs/common";
+import { UrlService } from "../url/service";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { ProductionCompaniesDto } from "../../dto/productionCompanies.dto";
 import { ProductionCompanyDto } from "../../dto/productionCompany.dto";
@@ -19,7 +20,10 @@ class CompanyController {
   /**
    * @param {CompanyService} companyService
    */
-  constructor(private companyService: CompanyService) {}
+  constructor(
+    private companyService: CompanyService,
+    private urlService: UrlService,
+  ) {}
 
   /**
    * GET /companies route handler
@@ -29,15 +33,24 @@ class CompanyController {
    */
   @Get()
   async findAll(
-    @Query() query: PaginationDto
+    @Query() query: PaginationDto,
   ): Promise<ProductionCompaniesDto> {
     const response = new ProductionCompaniesDto();
 
     response.companies = await this.companyService.findAll(query);
 
-    response.meta.totalRecords = await this.companyService.totalRecords();
+    const totalRecords = await this.companyService.totalRecords();
+
+    response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
+
+    response.links = this.urlService.createLinks(
+      "/companies",
+      totalRecords,
+      query.page,
+      query.perPage,
+    );
 
     return response;
   }

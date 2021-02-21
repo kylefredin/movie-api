@@ -3,11 +3,12 @@ import { MovieController } from "./controller";
 import { MovieService } from "./service";
 import { movieProviders } from "./provider";
 import { DatabaseModule } from "../../database/module";
+import { UrlService } from "../url/service";
 
 @Module({
   imports: [DatabaseModule],
   controllers: [MovieController],
-  providers: [...movieProviders, MovieService],
+  providers: [...movieProviders, MovieService, UrlService],
 })
 class MovieModule {}
 
