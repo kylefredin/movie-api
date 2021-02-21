@@ -10,9 +10,18 @@
 
 Steps to run this project:
 
-1. Run `npm i` command
-2. Run `npm run seed:run` to seed the database
-3. Run `docker-compose up` command to start the server
+1. Run `git clone git@github.com:kylefredin/movie-api.git`
+2. Run `cd movie-api`
+3. Run `npm i` command
+4. Run `docker-compose up` command to start the server
+5. Run `npm run seed:run` to seed the database
+
+## Seeding
+
+### Known Issue
+
+- For some reason the seeder script will hang after running 10 seeder files.
+- To workaround, only seed 10 files at a time
 
 ## Testing
 
