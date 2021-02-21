@@ -12,7 +12,7 @@ Steps to run this project:
 
 1. Run `npm i` command
 2. Run `npm run seed:run` to seed the database
-3. Run `npm start` command to start the server
+3. Run `docker-compose up` command to start the server
 
 ## Testing
 
@@ -43,7 +43,14 @@ Steps to run this project:
 - [Jest](https://jestjs.io/docs/en/getting-started)
 - [Docker Compose](https://docs.docker.com/compose/)
 
-## VSCode Debugger
+## VSCode
+
+To use the VSCode debugger follow these instructions:
+
+1. On the left panel of VS Code, click on the Debug and run panel
+2. Click create a launch.json file
+3. Choose Node.js
+4. Use this configuration:
 
 ```
 {
