@@ -3,7 +3,7 @@ const {
   API_DOCUMENTATION_PATH = "api",
   API_TITLE = "Movies",
   API_VERSION = "1.0",
-  DATABASE_HOST = "localhost",
+  DATABASE_HOST = "mysql",
   DATABASE_PORT = 3306,
   DATABASE_USERNAME = "test",
   DATABASE_PASSWORD = "test",

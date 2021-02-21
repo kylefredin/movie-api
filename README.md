@@ -2,6 +2,7 @@
 
 ## Prerequisites
 
+- [Docker](https://docs.docker.com/get-docker/)
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
 
