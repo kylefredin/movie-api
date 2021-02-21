@@ -2,30 +2,25 @@ import { URL } from "url";
 import { Injectable } from "@nestjs/common";
 import { BASE_URL } from "../../constants";
 import { LinksDto } from "../../dto/links.dto";
-import { getLinksDtoRequest } from "./getLinksDtoRequest";
+import { MetaDto } from "../../dto/meta.dto";
 
 @Injectable()
 class UrlService {
-  getLinksDto({
-    path,
-    totalPages,
-    currentPage,
-    perPage,
-  }: getLinksDtoRequest): LinksDto {
+  getLinksDto(path: string, meta: MetaDto): LinksDto {
     const links = new LinksDto();
 
-    if (totalPages < 2) {
+    if (meta.totalPages < 2) {
       return links;
     }
 
-    if (currentPage > 1) {
-      links.prev = this.getPreviousLink(path, currentPage, perPage);
-      links.first = this.getFirstLink(path, perPage);
+    if (meta.currentPage > 1) {
+      links.prev = this.getPreviousLink(path, meta.currentPage, meta.perPage);
+      links.first = this.getFirstLink(path, meta.perPage);
     }
 
-    if (currentPage !== totalPages) {
-      links.next = this.getNextLink(path, currentPage, perPage);
-      links.last = this.getLastLink(path, totalPages, perPage);
+    if (!meta.isLastPage) {
+      links.next = this.getNextLink(path, meta.currentPage, meta.perPage);
+      links.last = this.getLastLink(path, meta.totalPages, meta.perPage);
     }
 
     return links;

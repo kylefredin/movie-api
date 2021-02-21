@@ -34,10 +34,8 @@ describe("CountryController", () => {
       const serviceResponse: Country[] = [];
 
       jest
-        .spyOn(countryService, "totalRecords")
-        .mockResolvedValue(serviceResponse.length);
-
-      jest.spyOn(countryService, "findAll").mockResolvedValue(serviceResponse);
+        .spyOn(countryService, "findAll")
+        .mockResolvedValue([serviceResponse, serviceResponse.length]);
 
       const query = new PaginationDto();
 
@@ -57,10 +55,8 @@ describe("CountryController", () => {
       ];
 
       jest
-        .spyOn(countryService, "totalRecords")
-        .mockResolvedValue(serviceResponse.length);
-
-      jest.spyOn(countryService, "findAll").mockResolvedValue(serviceResponse);
+        .spyOn(countryService, "findAll")
+        .mockResolvedValue([serviceResponse, serviceResponse.length]);
 
       const query = new PaginationDto();
 

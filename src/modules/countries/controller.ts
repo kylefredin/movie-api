@@ -37,22 +37,17 @@ class CountryController {
    */
   @Get()
   async findAll(@Query() query: PaginationDto): Promise<CountriesDto> {
+    const [countries, totalRecords] = await this.countryService.findAll(query);
+
     const response = new CountriesDto();
 
-    response.countries = await this.countryService.findAll(query);
-
-    const totalRecords = await this.countryService.totalRecords();
+    response.countries = countries;
 
     response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto({
-      path: "/countries",
-      totalPages: totalRecords,
-      currentPage: query.page,
-      perPage: query.perPage,
-    });
+    response.links = this.urlService.getLinksDto("/countries", response.meta);
 
     return response;
   }

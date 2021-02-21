@@ -13,7 +13,7 @@ class CompanyService {
    */
   constructor(
     @Inject("COMPANY_REPOSITORY")
-    private companyRepository: Repository<ProductionCompany>
+    private companyRepository: Repository<ProductionCompany>,
   ) {}
 
   /**
@@ -29,14 +29,14 @@ class CompanyService {
    * Returns all records for the paginated set
    *
    * @param {PaginationDto} query
-   * @return {Promise<ProductionCompany[]>}
+   * @return {Promise<[ProductionCompany[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<ProductionCompany[]> {
+  async findAll(query: PaginationDto): Promise<[ProductionCompany[], number]> {
     return this.companyRepository
       .createQueryBuilder()
       .skip(query.offset)
       .take(query.limit)
-      .getMany();
+      .getManyAndCount();
   }
 
   /**

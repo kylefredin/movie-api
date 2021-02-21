@@ -35,22 +35,17 @@ class CompanyController {
   async findAll(
     @Query() query: PaginationDto,
   ): Promise<ProductionCompaniesDto> {
+    const [companies, totalRecords] = await this.companyService.findAll(query);
+
     const response = new ProductionCompaniesDto();
 
-    response.companies = await this.companyService.findAll(query);
-
-    const totalRecords = await this.companyService.totalRecords();
+    response.companies = companies;
 
     response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto({
-      path: "/companies",
-      totalPages: totalRecords,
-      currentPage: query.page,
-      perPage: query.perPage,
-    });
+    response.links = this.urlService.getLinksDto("/companies", response.meta);
 
     return response;
   }

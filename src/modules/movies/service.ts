@@ -13,7 +13,7 @@ class MovieService {
    */
   constructor(
     @Inject("MOVIE_REPOSITORY")
-    private movieRepository: Repository<Movie>
+    private movieRepository: Repository<Movie>,
   ) {}
 
   /**
@@ -29,14 +29,14 @@ class MovieService {
    * Returns all records for the paginated set
    *
    * @param {PaginationDto} query
-   * @return {Promise<Movie[]>}
+   * @return {Promise<[Movie[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<Movie[]> {
+  async findAll(query: PaginationDto): Promise<[Movie[], number]> {
     return this.movieRepository
       .createQueryBuilder()
       .skip(query.offset)
       .take(query.limit)
-      .getMany();
+      .getManyAndCount();
   }
 
   /**

@@ -37,22 +37,17 @@ class MovieController {
    */
   @Get()
   async findAll(@Query() query: PaginationDto): Promise<MoviesDto> {
+    const [movies, totalRecords] = await this.movieService.findAll(query);
+
     const response = new MoviesDto();
 
-    response.movies = await this.movieService.findAll(query);
-
-    const totalRecords = await this.movieService.totalRecords();
+    response.movies = movies;
 
     response.meta.totalRecords = totalRecords;
     response.meta.currentPage = query.page;
     response.meta.perPage = query.perPage;
 
-    response.links = this.urlService.getLinksDto({
-      path: "/movies",
-      totalPages: totalRecords,
-      currentPage: query.page,
-      perPage: query.perPage,
-    });
+    response.links = this.urlService.getLinksDto("/movies", response.meta);
 
     return response;
   }

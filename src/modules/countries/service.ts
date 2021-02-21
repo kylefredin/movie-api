@@ -13,7 +13,7 @@ class CountryService {
    */
   constructor(
     @Inject("COUNTRY_REPOSITORY")
-    private countryRepository: Repository<Country>
+    private countryRepository: Repository<Country>,
   ) {}
 
   /**
@@ -29,14 +29,14 @@ class CountryService {
    * Returns all records for the paginated set
    *
    * @param {PaginationDto} query
-   * @return {Promise<Country[]>}
+   * @return {Promise<[Country[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<Country[]> {
+  async findAll(query: PaginationDto): Promise<[Country[], number]> {
     return this.countryRepository
       .createQueryBuilder()
       .skip(query.offset)
       .take(query.limit)
-      .getMany();
+      .getManyAndCount();
   }
 
   /**

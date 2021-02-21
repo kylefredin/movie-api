@@ -1,4 +1,5 @@
-import { LinksDto } from "src/dto/links.dto";
+import { LinksDto } from "../../dto/links.dto";
+import MetaDto from "../../dto/meta.dto";
 import { UrlService } from "./service";
 
 describe("UrlService", () => {
@@ -6,12 +7,7 @@ describe("UrlService", () => {
     it("should return empty links by default", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.getLinksDto({
-        path: "/test",
-        totalPages: 0,
-        currentPage: 0,
-        perPage: 0,
-      });
+      const links: LinksDto = service.getLinksDto("/test", new MetaDto());
 
       expect(links.first).toBeNull();
       expect(links.last).toBeNull();
@@ -22,12 +18,12 @@ describe("UrlService", () => {
     it("should return correct next and last links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.getLinksDto({
-        path: "/test",
-        totalPages: 2,
-        currentPage: 1,
-        perPage: 10,
-      });
+      const meta = new MetaDto();
+      meta.totalRecords = 20;
+      meta.currentPage = 1;
+      meta.perPage = 10;
+
+      const links: LinksDto = service.getLinksDto("/test", meta);
 
       expect(links.first).toBeNull();
       expect(links.last).toStrictEqual(
@@ -42,12 +38,12 @@ describe("UrlService", () => {
     it("should return correct first and prev links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.getLinksDto({
-        path: "/test",
-        totalPages: 2,
-        currentPage: 2,
-        perPage: 10,
-      });
+      const meta = new MetaDto();
+      meta.totalRecords = 20;
+      meta.currentPage = 2;
+      meta.perPage = 10;
+
+      const links: LinksDto = service.getLinksDto("/test", meta);
 
       expect(links.first).toStrictEqual(
         "http://localhost:3000/test?page=1&perPage=10",
@@ -62,12 +58,12 @@ describe("UrlService", () => {
     it("should return correct links", () => {
       const service = new UrlService();
 
-      const links: LinksDto = service.getLinksDto({
-        path: "/test",
-        totalPages: 5,
-        currentPage: 2,
-        perPage: 10,
-      });
+      const meta = new MetaDto();
+      meta.totalRecords = 50;
+      meta.currentPage = 2;
+      meta.perPage = 10;
+
+      const links: LinksDto = service.getLinksDto("/test", meta);
 
       expect(links.first).toStrictEqual(
         "http://localhost:3000/test?page=1&perPage=10",
