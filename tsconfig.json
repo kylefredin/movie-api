@@ -1,9 +1,13 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
+    "baseUrl": "./",
+    "declaration": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es2018"],
+    "incremental": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
@@ -11,7 +15,8 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "outDir": "./build",
+    "outDir": "./dist",
+    "removeComments": true,
     "sourceMap": true,
     "strict": true,
     "strictBindCallApply": true,
