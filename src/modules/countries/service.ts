@@ -9,7 +9,7 @@ import { Country } from "../../entity/Country";
 @Injectable()
 class CountryService {
   /**
-   * @param {countryRepository}
+   * @param {Repository<Country>} countryRepository
    */
   constructor(
     @Inject("COUNTRY_REPOSITORY")

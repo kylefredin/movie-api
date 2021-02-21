@@ -21,7 +21,7 @@ import Country from "../../entity/Country";
 @Controller("countries")
 class CountryController {
   /**
-   * @param {countryService}
+   * @param {CountryService} countryService
    */
   constructor(private countryService: CountryService) {}
 
