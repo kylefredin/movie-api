@@ -9,18 +9,20 @@ class UrlService {
   getLinksDto(path: string, meta: MetaDto): LinksDto {
     const links = new LinksDto();
 
-    if (meta.totalPages < 2) {
+    const { currentPage, isLastPage, perPage, totalPages } = meta;
+
+    if (totalPages < 2) {
       return links;
     }
 
-    if (meta.currentPage > 1) {
-      links.prev = this.getPreviousLink(path, meta.currentPage, meta.perPage);
-      links.first = this.getFirstLink(path, meta.perPage);
+    if (currentPage > 1) {
+      links.prev = this.getPreviousLink(path, currentPage, perPage);
+      links.first = this.getFirstLink(path, perPage);
     }
 
-    if (!meta.isLastPage) {
-      links.next = this.getNextLink(path, meta.currentPage, meta.perPage);
-      links.last = this.getLastLink(path, meta.totalPages, meta.perPage);
+    if (!isLastPage) {
+      links.next = this.getNextLink(path, currentPage, totalPages, perPage);
+      links.last = this.getLastLink(path, totalPages, perPage);
     }
 
     return links;
@@ -35,10 +37,19 @@ class UrlService {
     return first.toString();
   }
 
-  getNextLink(path: string, currentPage: number, perPage: number): string {
+  getNextLink(
+    path: string,
+    currentPage: number,
+    totalPages: number,
+    perPage: number,
+  ): string {
     const next = new URL(path, BASE_URL);
 
-    next.searchParams.append("page", String(currentPage + 1));
+    next.searchParams.append(
+      "page",
+      String(Math.min(totalPages, currentPage + 1)),
+    );
+
     next.searchParams.append("perPage", String(perPage));
 
     return next.toString();

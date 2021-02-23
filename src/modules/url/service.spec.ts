@@ -96,9 +96,19 @@ describe("UrlService", () => {
     it("should return correct string", () => {
       const service = new UrlService();
 
-      const next = service.getNextLink("/test", 1, 10);
+      const next = service.getNextLink("/test", 1, 3, 10);
 
       expect(next).toStrictEqual(
+        "http://localhost:3000/test?page=2&perPage=10",
+      );
+    });
+
+    it("should return ensure page is not more than total", () => {
+      const service = new UrlService();
+
+      const previous = service.getNextLink("/test", 2, 2, 10);
+
+      expect(previous).toStrictEqual(
         "http://localhost:3000/test?page=2&perPage=10",
       );
     });
