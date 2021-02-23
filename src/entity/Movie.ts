@@ -11,6 +11,7 @@ import { MovieCast } from "./MovieCast";
 import { MovieCrew } from "./MovieCrew";
 import { Keyword } from "./Keyword";
 import { ProductionCompany } from "./ProductionCompany";
+import { RecordLinksDto } from "../dto/recordLinks.dto";
 
 @Entity()
 class Movie {
@@ -98,6 +99,11 @@ class Movie {
   @ManyToMany(() => ProductionCompany, (company) => company.movies)
   @JoinTable({ name: "movie_company" })
   companies: ProductionCompany[];
+
+  /**
+   * @type {RecordLinksDto}
+   */
+  links: RecordLinksDto = new RecordLinksDto();
 }
 
 export default Movie;

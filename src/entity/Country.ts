@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { IsString, MaxLength } from "class-validator";
+import { RecordLinksDto } from "../dto/recordLinks.dto";
 
 /**
  * Represents a country on planet Earth
@@ -33,6 +34,11 @@ class Country {
   @MaxLength(200)
   @IsString()
   name: string;
+
+  /**
+   * @type {RecordLinksDto}
+   */
+  links: RecordLinksDto = new RecordLinksDto();
 }
 
 export default Country;

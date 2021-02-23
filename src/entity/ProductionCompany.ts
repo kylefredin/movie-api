@@ -1,4 +1,5 @@
 import { IsString, Max } from "class-validator";
+import { RecordLinksDto } from "../dto/recordLinks.dto";
 import { Entity, Column, PrimaryColumn, ManyToMany } from "typeorm";
 import { Movie } from "./Movie";
 
@@ -29,6 +30,11 @@ class ProductionCompany {
    */
   @ManyToMany(() => Movie, (movie) => movie.companies)
   movies: Movie[];
+
+  /**
+   * @type {RecordLinksDto}
+   */
+  links: RecordLinksDto = new RecordLinksDto();
 }
 
 export default ProductionCompany;

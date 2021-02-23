@@ -2,6 +2,7 @@ import { Injectable, Inject } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { Movie } from "../../entity/Movie";
+import { UrlService } from "../url/service";
 
 /**
  * Contains methods to perform CRUD operations on Movie entities
@@ -14,6 +15,7 @@ class MovieService {
   constructor(
     @Inject("MOVIE_REPOSITORY")
     private movieRepository: Repository<Movie>,
+    private urlService: UrlService,
   ) {}
 
   /**
@@ -32,11 +34,20 @@ class MovieService {
    * @return {Promise<[Movie[], number]>}
    */
   async findAll(query: PaginationDto): Promise<[Movie[], number]> {
-    return this.movieRepository
+    const [
+      movies,
+      count,
+    ] = await this.movieRepository
       .createQueryBuilder()
       .skip(query.offset)
       .take(query.limit)
       .getManyAndCount();
+
+    movies.forEach((movie: Movie) => {
+      movie.links = this.urlService.getRecordLinksDto("/movies", movie.id);
+    });
+
+    return [movies, count];
   }
 
   /**
@@ -46,9 +57,17 @@ class MovieService {
    * @return {Promise<Movie>}
    */
   async findOne(id: number): Promise<Movie | undefined> {
-    return this.movieRepository.findOne(id, {
+    const movie = await this.movieRepository.findOne(id, {
       relations: ["genres", "keywords", "companies"],
     });
+
+    if (!movie) {
+      return movie;
+    }
+
+    movie.links = this.urlService.getRecordLinksDto("/movies", movie.id);
+
+    return movie;
   }
 
   /**
@@ -58,7 +77,11 @@ class MovieService {
    * @return {Promise<Movie>}
    */
   async create(movie: Movie): Promise<Movie> {
-    return this.movieRepository.save(movie);
+    const entity = await this.movieRepository.save(movie);
+
+    entity.links = this.urlService.getRecordLinksDto("/movies", entity.id);
+
+    return entity;
   }
 
   /**
@@ -75,7 +98,7 @@ class MovieService {
       .where("id = :id", { id })
       .execute();
 
-    return (this.movieRepository.findOne(id) as unknown) as Movie;
+    return (this.findOne(id) as unknown) as Movie;
   }
 }
 

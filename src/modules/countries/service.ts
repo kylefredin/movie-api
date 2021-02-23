@@ -2,6 +2,7 @@ import { Injectable, Inject } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { Country } from "../../entity/Country";
+import { UrlService } from "../url/service";
 
 /**
  * Contains methods to perform CRUD operations on Country entities
@@ -14,6 +15,7 @@ class CountryService {
   constructor(
     @Inject("COUNTRY_REPOSITORY")
     private countryRepository: Repository<Country>,
+    private urlService: UrlService,
   ) {}
 
   /**
@@ -32,11 +34,23 @@ class CountryService {
    * @return {Promise<[Country[], number]>}
    */
   async findAll(query: PaginationDto): Promise<[Country[], number]> {
-    return this.countryRepository
+    const [
+      countries,
+      count,
+    ] = await this.countryRepository
       .createQueryBuilder()
       .skip(query.offset)
       .take(query.limit)
       .getManyAndCount();
+
+    countries.forEach((country: Country) => {
+      country.links = this.urlService.getRecordLinksDto(
+        "/countries",
+        country.id,
+      );
+    });
+
+    return [countries, count];
   }
 
   /**
@@ -46,7 +60,15 @@ class CountryService {
    * @return {Promise<Country>}
    */
   async findOne(id: number): Promise<Country | undefined> {
-    return this.countryRepository.findOne(id);
+    const country = await this.countryRepository.findOne(id);
+
+    if (!country) {
+      return country;
+    }
+
+    country.links = this.urlService.getRecordLinksDto("/countries", country.id);
+
+    return country;
   }
 
   /**
@@ -56,7 +78,11 @@ class CountryService {
    * @return {Promise<Country>}
    */
   async create(country: Country): Promise<Country> {
-    return this.countryRepository.save(country);
+    const entity = await this.countryRepository.save(country);
+
+    entity.links = this.urlService.getRecordLinksDto("/countries", entity.id);
+
+    return entity;
   }
 
   /**
@@ -73,7 +99,7 @@ class CountryService {
       .where("id = :id", { id })
       .execute();
 
-    return (this.countryRepository.findOne(id) as unknown) as Country;
+    return (this.findOne(id) as unknown) as Country;
   }
 }
 

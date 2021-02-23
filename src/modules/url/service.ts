@@ -3,6 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { BASE_URL } from "../../constants";
 import { LinksDto } from "../../dto/links.dto";
 import { MetaDto } from "../../dto/meta.dto";
+import { RecordLinksDto } from "src/dto/recordLinks.dto";
 
 @Injectable()
 class UrlService {
@@ -26,6 +27,14 @@ class UrlService {
     }
 
     return links;
+  }
+
+  getRecordLinksDto(path: string, id: number | string): RecordLinksDto {
+    const link = new RecordLinksDto();
+
+    link.self = new URL(`${path}/${id}`, BASE_URL).toString();
+
+    return link;
   }
 
   getFirstLink(path: string, perPage: number): string {
