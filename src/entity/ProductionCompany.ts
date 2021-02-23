@@ -2,6 +2,7 @@ import { IsString, Max } from "class-validator";
 import { RecordLinksDto } from "../dto/recordLinks.dto";
 import { Entity, Column, PrimaryColumn, ManyToMany } from "typeorm";
 import { Movie } from "./Movie";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 @Entity()
 class ProductionCompany {
@@ -11,6 +12,7 @@ class ProductionCompany {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
+  @ApiPropertyOptional()
   id: number;
 
   /**
@@ -21,6 +23,7 @@ class ProductionCompany {
   @Column({ default: "", type: "varchar", length: 200 })
   @Max(200)
   @IsString()
+  @ApiProperty()
   name: string;
 
   /**

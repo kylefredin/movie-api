@@ -12,26 +12,32 @@ import { MovieCrew } from "./MovieCrew";
 import { Keyword } from "./Keyword";
 import { ProductionCompany } from "./ProductionCompany";
 import { RecordLinksDto } from "../dto/recordLinks.dto";
+import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 
 @Entity()
 class Movie {
   @PrimaryGeneratedColumn({ type: "int" })
+  @ApiPropertyOptional()
   id: number;
 
   @Column({ default: "", length: 1000, type: "varchar", nullable: true })
   @Max(1000)
   @IsString()
+  @ApiProperty()
   title: string;
 
   @Column({ default: 0, type: "int", width: 10, nullable: true })
+  @ApiProperty()
   budget: number;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
+  @ApiProperty()
   homepage: string;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
+  @ApiProperty()
   overview: string;
 
   @Column({
@@ -42,28 +48,34 @@ class Movie {
     nullable: true,
   })
   @IsDecimal()
+  @ApiProperty()
   popularity: number;
 
   @Column({ type: "date", nullable: true })
   @IsDate()
+  @ApiProperty()
   releaseDate: Date;
 
   @Column({ default: 0, type: "bigint", width: 20, nullable: true })
   @IsInt()
   @Min(0)
+  @ApiProperty()
   revenue: number;
 
   @Column({ default: 0, type: "int", width: 5, nullable: true })
   @IsInt()
   @Min(0)
+  @ApiProperty()
   runtime: number;
 
   @Column({ type: "varchar", length: 50, nullable: true })
   @Max(50)
+  @ApiProperty()
   movieStatus: string;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
+  @ApiProperty()
   tagline: string;
 
   @Column({
@@ -75,11 +87,13 @@ class Movie {
   })
   @IsDecimal()
   @Min(0)
+  @ApiProperty()
   voteAverage: number;
 
   @Column({ default: 0, type: "int", width: 10, nullable: true })
   @IsInt()
   @Min(0)
+  @ApiProperty()
   voteCount: number;
 
   @ManyToMany(() => MovieCast, (movieCast) => movieCast.movie)
