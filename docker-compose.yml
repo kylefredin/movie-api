@@ -24,5 +24,7 @@ services:
     ports: ["3306:3306"]
     networks:
       - webnet
+    security_opt:
+      - seccomp:unconfined
 networks:
   webnet:
