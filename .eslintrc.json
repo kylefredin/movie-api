@@ -136,7 +136,10 @@
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/semi": "error",
-    "@typescript-eslint/space-before-function-paren": "off"
+    "@typescript-eslint/space-before-function-paren": [
+      "error",
+      { "anonymous": "always", "named": "never", "asyncArrow": "always" }
+    ]
   },
 
   "overrides": [
