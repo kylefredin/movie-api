@@ -6,6 +6,13 @@
 - [Node.js](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
 
+## Documentation
+
+- [NestJS](https://docs.nestjs.com/)
+- [TypeORM](https://github.com/typeorm/typeorm)
+- [Jest](https://jestjs.io/docs/en/getting-started)
+- [Docker Compose](https://docs.docker.com/compose/)
+
 ## Getting Started
 
 Steps to run this project:
@@ -48,13 +55,6 @@ Steps to run this project:
 - [Countries API](http://localhost:3000/countries)
 - [Companies API](http://localhost:3000/companies)
 - [Movies API](http://localhost:3000/movies)
-
-## Documentation
-
-- [NestJS](https://docs.nestjs.com/)
-- [TypeORM](https://github.com/typeorm/typeorm)
-- [Jest](https://jestjs.io/docs/en/getting-started)
-- [Docker Compose](https://docs.docker.com/compose/)
 
 ## VSCode
 
