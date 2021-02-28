@@ -19,7 +19,7 @@ describe("CountryController", () => {
       providers: [
         {
           provide: Repositories.Country,
-          useFactory: () => {},
+          useFactory: (): void => {},
         },
         CountryService,
         UrlService,

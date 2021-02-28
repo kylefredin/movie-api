@@ -12,7 +12,7 @@ describe("CountryService", () => {
         providers: [
           {
             provide: Repositories.Country,
-            useFactory: () => ({ count: () => 1 }),
+            useFactory: (): any => ({ count: (): number => 1 }),
           },
           CountryService,
           UrlService,

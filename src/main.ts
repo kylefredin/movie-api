@@ -6,7 +6,7 @@ import "reflect-metadata";
 import { SERVER_PORT } from "./constants";
 import { Bootstrap } from "./bootstrap";
 
-async function start() {
+async function start(): Promise<void> {
   const app = await NestFactory.create(AppModule);
 
   const bootstrap = new Bootstrap();

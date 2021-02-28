@@ -1,4 +1,4 @@
-import { Connection } from "typeorm";
+import { Connection, Repository } from "typeorm";
 import { ProductionCompany } from "../../entity/ProductionCompany";
 import { Connections, Repositories } from "../../enums";
 
@@ -17,7 +17,7 @@ const companyProviders = [
      * @param {Connection} connection
      * @return {Repository<ProductionCompany>}
      */
-    useFactory: (connection: Connection) =>
+    useFactory: (connection: Connection): Repository<ProductionCompany> =>
       connection.getRepository(ProductionCompany),
 
     /**

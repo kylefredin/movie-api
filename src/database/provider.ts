@@ -23,7 +23,7 @@ const databaseProviders = [
      *
      * @return {Promise<Connection>}
      */
-    useFactory: async () =>
+    useFactory: async (): Promise<Connection> =>
       createConnection({
         type: "mysql",
         host: DATABASE_HOST,

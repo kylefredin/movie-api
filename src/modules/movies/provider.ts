@@ -1,5 +1,5 @@
-import { Connections, Repositories } from "src/enums";
-import { Connection } from "typeorm";
+import { Connection, Repository } from "typeorm";
+import { Connections, Repositories } from "../../enums";
 import { Movie } from "../../entity/Movie";
 
 const movieProviders = [
@@ -17,7 +17,8 @@ const movieProviders = [
      * @param {Connection} connection
      * @return {Repository<Movie>}
      */
-    useFactory: (connection: Connection) => connection.getRepository(Movie),
+    useFactory: (connection: Connection): Repository<Movie> =>
+      connection.getRepository(Movie),
 
     /**
      * Defines the arguments for the useFactory method
