@@ -16,7 +16,7 @@ class PaginationDto {
    *
    * @type {number}
    */
-  @Transform(({ value }) => (isFinite(value) ? Number(value) : value))
+  @Transform(({ value }) => isFinite(value) ? Number(value) : value)
   @IsInt()
   @Min(1)
   public page: number = defaultPage;
@@ -26,7 +26,7 @@ class PaginationDto {
    *
    * @type {number}
    */
-  @Transform(({ value }) => (isFinite(value) ? Number(value) : value))
+  @Transform(({ value }) => isFinite(value) ? Number(value) : value)
   @IsInt()
   @Min(1)
   @Max(maximumPerPage)
