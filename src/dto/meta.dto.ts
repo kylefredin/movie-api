@@ -17,7 +17,7 @@ class MetaDto {
    */
   @IsInt()
   @Min(0)
-  public totalRecords: number = 0;
+  public totalRecords = 0;
 
   /**
    * The current page
