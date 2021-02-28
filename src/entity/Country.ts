@@ -42,7 +42,7 @@ class Country {
   /**
    * @type {RecordLinksDto}
    */
-  links: RecordLinksDto = new RecordLinksDto();
+  links?: RecordLinksDto = new RecordLinksDto();
 }
 
 export default Country;

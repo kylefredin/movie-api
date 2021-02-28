@@ -1,5 +1,5 @@
 import { LinksDto } from "../../dto/links.dto";
-import MetaDto from "../../dto/meta.dto";
+import { MetaDto } from "../../dto/meta.dto";
 import { UrlService } from "./service";
 
 describe("UrlService", () => {

@@ -7,6 +7,7 @@ import { Country } from "../../entity/Country";
 import { UrlService } from "../url/service";
 import { CountryController } from "./controller";
 import { CountryService } from "./service";
+import { Repositories } from "../../enums";
 
 describe("CountryController", () => {
   let countryController: CountryController;
@@ -17,7 +18,7 @@ describe("CountryController", () => {
       controllers: [CountryController],
       providers: [
         {
-          provide: "COUNTRY_REPOSITORY",
+          provide: Repositories.Country,
           useFactory: () => {},
         },
         CountryService,

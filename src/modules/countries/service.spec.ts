@@ -1,4 +1,6 @@
 import { Test, TestingModule } from "@nestjs/testing";
+import { Repositories } from "../../enums";
+import { UrlService } from "../url/service";
 import { CountryService } from "./service";
 
 describe("CountryService", () => {
@@ -9,10 +11,11 @@ describe("CountryService", () => {
       const moduleRef: TestingModule = await Test.createTestingModule({
         providers: [
           {
-            provide: "COUNTRY_REPOSITORY",
+            provide: Repositories.Country,
             useFactory: () => ({ count: () => 1 }),
           },
           CountryService,
+          UrlService,
         ],
       }).compile();
 

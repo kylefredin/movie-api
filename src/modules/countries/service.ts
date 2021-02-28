@@ -1,4 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
+import { Repositories } from "../../enums";
 import { Repository } from "typeorm";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { Country } from "../../entity/Country";
@@ -13,7 +14,7 @@ class CountryService {
    * @param {Repository<Country>} countryRepository
    */
   constructor(
-    @Inject("COUNTRY_REPOSITORY")
+    @Inject(Repositories.Country)
     private countryRepository: Repository<Country>,
     private urlService: UrlService,
   ) {}

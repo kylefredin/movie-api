@@ -3,7 +3,7 @@ import { Injectable } from "@nestjs/common";
 import { BASE_URL } from "../../constants";
 import { LinksDto } from "../../dto/links.dto";
 import { MetaDto } from "../../dto/meta.dto";
-import { RecordLinksDto } from "src/dto/recordLinks.dto";
+import { RecordLinksDto } from "../../dto/recordLinks.dto";
 
 @Injectable()
 class UrlService {

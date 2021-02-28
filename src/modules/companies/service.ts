@@ -1,4 +1,5 @@
 import { Injectable, Inject } from "@nestjs/common";
+import { Repositories } from "src/enums";
 import { Repository } from "typeorm";
 import { PaginationDto } from "../../dto/pagination.dto";
 import { ProductionCompany } from "../../entity/ProductionCompany";
@@ -13,7 +14,7 @@ class CompanyService {
    * @param {Repository<ProductionCompany>} companyRepository
    */
   constructor(
-    @Inject("COMPANY_REPOSITORY")
+    @Inject(Repositories.Company)
     private companyRepository: Repository<ProductionCompany>,
     private urlService: UrlService,
   ) {}
