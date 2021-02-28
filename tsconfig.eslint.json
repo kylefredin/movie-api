@@ -2,11 +2,15 @@
   "compilerOptions": {},
   "include": [
     "src/**/*.ts",
+    "test/**/*.ts",
+    "test/**/*.json",
     ".eslintrc.json",
     "jest.config.js",
+    "nest-cli.json",
     "ormconfig.json",
     "package.json",
     "tsconfig.json",
+    "tsconfig.build.json",
     "tsconfig.eslint.json"
   ]
 }
