@@ -14,7 +14,7 @@ class CountryService {
    * @param {Repository<Country>} countryRepository
    */
   public constructor(
-    @Inject(Repositories.Country)
+    @Inject(Repositories.country)
     private countryRepository: Repository<Country>,
     private urlService: UrlService,
   ) {}

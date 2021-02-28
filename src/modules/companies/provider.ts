@@ -9,7 +9,7 @@ const companyProviders = [
      *
      * @type {string}
      */
-    provide: Repositories.Company,
+    provide: Repositories.company,
 
     /**
      * Defines the function to run when this provider is requested
@@ -25,7 +25,7 @@ const companyProviders = [
      *
      * @type {string[]}
      */
-    inject: [Connections.Database],
+    inject: [Connections.database],
   },
 ];
 

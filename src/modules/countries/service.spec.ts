@@ -11,7 +11,7 @@ describe("CountryService", () => {
       const moduleRef: TestingModule = await Test.createTestingModule({
         providers: [
           {
-            provide: Repositories.Country,
+            provide: Repositories.country,
             useFactory: (): any => ({ count: (): number => 1 }),
           },
           CountryService,

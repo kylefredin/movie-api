@@ -14,7 +14,7 @@ class CompanyService {
    * @param {Repository<ProductionCompany>} companyRepository
    */
   public constructor(
-    @Inject(Repositories.Company)
+    @Inject(Repositories.company)
     private companyRepository: Repository<ProductionCompany>,
     private urlService: UrlService,
   ) {}

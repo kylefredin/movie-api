@@ -9,7 +9,7 @@ const movieProviders = [
      *
      * @type {string}
      */
-    provide: Repositories.Movie,
+    provide: Repositories.movie,
 
     /**
      * Defines the function to run when this provider is requested
@@ -25,7 +25,7 @@ const movieProviders = [
      *
      * @type {string[]}
      */
-    inject: [Connections.Database],
+    inject: [Connections.database],
   },
 ];
 

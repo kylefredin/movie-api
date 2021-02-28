@@ -9,7 +9,7 @@ const countryProviders = [
      *
      * @type {string}
      */
-    provide: Repositories.Country,
+    provide: Repositories.country,
 
     /**
      * Defines the function to run when this provider is requested
@@ -25,7 +25,7 @@ const countryProviders = [
      *
      * @type {string[]}
      */
-    inject: [Connections.Database],
+    inject: [Connections.database],
   },
 ];
 

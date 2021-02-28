@@ -16,7 +16,7 @@ const databaseProviders = [
      *
      * @type {string}
      */
-    provide: Connections.Database,
+    provide: Connections.database,
 
     /**
      * Defines the function to run when this provider is requested

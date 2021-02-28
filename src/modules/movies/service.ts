@@ -14,7 +14,7 @@ class MovieService {
    * @param {Repository<Movie>} movieRepository
    */
   public constructor(
-    @Inject(Repositories.Movie)
+    @Inject(Repositories.movie)
     private movieRepository: Repository<Movie>,
     private urlService: UrlService,
   ) {}

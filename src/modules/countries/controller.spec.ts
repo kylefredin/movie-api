@@ -18,7 +18,7 @@ describe("CountryController", () => {
       controllers: [CountryController],
       providers: [
         {
-          provide: Repositories.Country,
+          provide: Repositories.country,
           useFactory: (): void => {},
         },
         CountryService,
