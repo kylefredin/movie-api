@@ -24,7 +24,7 @@ class MovieController {
   /**
    * @param {MovieService} movieService
    */
-  constructor(
+  public constructor(
     private movieService: MovieService,
     private urlService: UrlService,
   ) {}
@@ -36,7 +36,7 @@ class MovieController {
    * @return {Promise<MoviesDto>}
    */
   @Get()
-  async findAll(@Query() query: PaginationDto): Promise<MoviesDto> {
+  public async findAll(@Query() query: PaginationDto): Promise<MoviesDto> {
     const [movies, totalRecords] = await this.movieService.findAll(query);
 
     const response = new MoviesDto();
@@ -59,7 +59,7 @@ class MovieController {
    * @return {Promise<MovieDto>}
    */
   @Get(":id")
-  async findOne(@Param("id") id: number): Promise<MovieDto> {
+  public async findOne(@Param("id") id: number): Promise<MovieDto> {
     const movie = await this.movieService.findOne(id);
 
     if (!movie) {
@@ -80,7 +80,7 @@ class MovieController {
    * @return {Promise<MovieDto>}
    */
   @Post()
-  async create(@Body() body: Movie): Promise<MovieDto> {
+  public async create(@Body() body: Movie): Promise<MovieDto> {
     const movie = await this.movieService.create(body);
 
     const response = new MovieDto();
@@ -97,7 +97,7 @@ class MovieController {
    * @return {Promise<MovieDto>}
    */
   @Put(":id")
-  async update(
+  public async update(
     @Param("id") id: number,
     @Body() body: Movie,
   ): Promise<MovieDto> {

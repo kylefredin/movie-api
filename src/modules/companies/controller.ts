@@ -20,7 +20,7 @@ class CompanyController {
   /**
    * @param {CompanyService} companyService
    */
-  constructor(
+  public constructor(
     private companyService: CompanyService,
     private urlService: UrlService,
   ) {}
@@ -32,7 +32,7 @@ class CompanyController {
    * @return {Promise<ProductionCompaniesDto>}
    */
   @Get()
-  async findAll(
+  public async findAll(
     @Query() query: PaginationDto,
   ): Promise<ProductionCompaniesDto> {
     const [companies, totalRecords] = await this.companyService.findAll(query);
@@ -57,7 +57,7 @@ class CompanyController {
    * @return {Promise<ProductionCompanyDto>}
    */
   @Get(":id")
-  async findOne(@Param("id") id: number): Promise<ProductionCompanyDto> {
+  public async findOne(@Param("id") id: number): Promise<ProductionCompanyDto> {
     const company = await this.companyService.findOne(id);
 
     if (!company) {

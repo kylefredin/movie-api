@@ -13,7 +13,7 @@ class Keyword {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  id: number;
+  public id: number;
 
   /**
    * The name of the keyword
@@ -23,7 +23,7 @@ class Keyword {
   @Column({ type: "varchar", length: 100, nullable: false })
   @MaxLength(100)
   @IsString()
-  name: string;
+  public name: string;
 
   /**
    * List of movies for the keyword
@@ -31,7 +31,7 @@ class Keyword {
    * @type {Movie[]}
    */
   @ManyToMany(() => Movie, (movie) => movie.keywords)
-  movies: Movie[];
+  public movies: Movie[];
 }
 
 export default Keyword;

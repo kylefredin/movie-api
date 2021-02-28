@@ -7,26 +7,26 @@ import { Person } from "./Person";
 @Entity()
 class MovieCast {
   @PrimaryGeneratedColumn({ type: "int" })
-  id: number;
+  public id: number;
 
   @ManyToOne(() => Movie, (movie) => movie.cast)
-  movie: Movie;
+  public movie: Movie;
 
   @ManyToOne(() => Person)
-  person: Person;
+  public person: Person;
 
   @Column({ default: "", type: "varchar", length: 400, nullable: false })
   @Max(400)
   @IsString()
-  characterName: string;
+  public characterName: string;
 
   @ManyToOne(() => Gender)
-  gender: Gender;
+  public gender: Gender;
 
   @Column({ default: 0, type: "int", width: 5 })
   @IsInt()
   @Min(0)
-  castOrder: number;
+  public castOrder: number;
 }
 
 export default MovieCast;

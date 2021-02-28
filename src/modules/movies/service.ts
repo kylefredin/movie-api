@@ -13,7 +13,7 @@ class MovieService {
   /**
    * @param {Repository<Movie>} movieRepository
    */
-  constructor(
+  public constructor(
     @Inject(Repositories.Movie)
     private movieRepository: Repository<Movie>,
     private urlService: UrlService,
@@ -24,7 +24,7 @@ class MovieService {
    *
    * @return {Promise<number>}
    */
-  async totalRecords(): Promise<number> {
+  public async totalRecords(): Promise<number> {
     return this.movieRepository.count();
   }
 
@@ -34,7 +34,7 @@ class MovieService {
    * @param {PaginationDto} query
    * @return {Promise<[Movie[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<[Movie[], number]> {
+  public async findAll(query: PaginationDto): Promise<[Movie[], number]> {
     const [
       movies,
       count,
@@ -57,7 +57,7 @@ class MovieService {
    * @param {number} id
    * @return {Promise<Movie>}
    */
-  async findOne(id: number): Promise<Movie | undefined> {
+  public async findOne(id: number): Promise<Movie | undefined> {
     const movie = await this.movieRepository.findOne(id, {
       relations: ["genres", "keywords", "companies"],
     });
@@ -77,7 +77,7 @@ class MovieService {
    * @param {Movie} movie
    * @return {Promise<Movie>}
    */
-  async create(movie: Movie): Promise<Movie> {
+  public async create(movie: Movie): Promise<Movie> {
     const entity = await this.movieRepository.save(movie);
 
     entity.links = this.urlService.getRecordLinksDto("/movies", entity.id);
@@ -91,7 +91,7 @@ class MovieService {
    * @param {Movie} movie
    * @return {Promise<Movie>}
    */
-  async update(id: number, movie: Movie): Promise<Movie> {
+  public async update(id: number, movie: Movie): Promise<Movie> {
     await this.movieRepository
       .createQueryBuilder()
       .update(Movie)

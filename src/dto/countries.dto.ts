@@ -9,17 +9,17 @@ class CountriesDto {
   /**
    * @type {Country[]}
    */
-  countries: Country[] = [];
+  public countries: Country[] = [];
 
   /**
    * @type {MetaDto}
    */
-  meta: MetaDto = new MetaDto();
+  public meta: MetaDto = new MetaDto();
 
   /**
    * @type {LinksDto}
    */
-  links: LinksDto = new LinksDto();
+  public links: LinksDto = new LinksDto();
 }
 
 export default CountriesDto;

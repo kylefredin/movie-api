@@ -13,7 +13,7 @@ class CountryService {
   /**
    * @param {Repository<Country>} countryRepository
    */
-  constructor(
+  public constructor(
     @Inject(Repositories.Country)
     private countryRepository: Repository<Country>,
     private urlService: UrlService,
@@ -24,7 +24,7 @@ class CountryService {
    *
    * @return {Promise<number>}
    */
-  async totalRecords(): Promise<number> {
+  public async totalRecords(): Promise<number> {
     return this.countryRepository.count();
   }
 
@@ -34,7 +34,7 @@ class CountryService {
    * @param {PaginationDto} query
    * @return {Promise<[Country[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<[Country[], number]> {
+  public async findAll(query: PaginationDto): Promise<[Country[], number]> {
     const [
       countries,
       count,
@@ -60,7 +60,7 @@ class CountryService {
    * @param {number} id
    * @return {Promise<Country>}
    */
-  async findOne(id: number): Promise<Country | undefined> {
+  public async findOne(id: number): Promise<Country | undefined> {
     const country = await this.countryRepository.findOne(id);
 
     if (!country) {
@@ -78,7 +78,7 @@ class CountryService {
    * @param {country} country
    * @return {Promise<Country>}
    */
-  async create(country: Country): Promise<Country> {
+  public async create(country: Country): Promise<Country> {
     const entity = await this.countryRepository.save(country);
 
     entity.links = this.urlService.getRecordLinksDto("/countries", entity.id);
@@ -92,7 +92,7 @@ class CountryService {
    * @param {country} country
    * @return {Promise<Country>}
    */
-  async update(id: number, country: Country): Promise<Country> {
+  public async update(id: number, country: Country): Promise<Country> {
     await this.countryRepository
       .createQueryBuilder()
       .update(Country)

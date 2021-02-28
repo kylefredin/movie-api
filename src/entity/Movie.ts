@@ -18,27 +18,27 @@ import { ApiProperty, ApiPropertyOptional } from "@nestjs/swagger";
 class Movie {
   @PrimaryGeneratedColumn({ type: "int" })
   @ApiPropertyOptional()
-  id: number;
+  public id: number;
 
   @Column({ default: "", length: 1000, type: "varchar", nullable: true })
   @Max(1000)
   @IsString()
   @ApiProperty()
-  title: string;
+  public title: string;
 
   @Column({ default: 0, type: "int", width: 10, nullable: true })
   @ApiProperty()
-  budget: number;
+  public budget: number;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
   @ApiProperty()
-  homepage: string;
+  public homepage: string;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
   @ApiProperty()
-  overview: string;
+  public overview: string;
 
   @Column({
     default: 0,
@@ -49,34 +49,34 @@ class Movie {
   })
   @IsDecimal()
   @ApiProperty()
-  popularity: number;
+  public popularity: number;
 
   @Column({ type: "date", nullable: true })
   @IsDate()
   @ApiProperty()
-  releaseDate: Date;
+  public releaseDate: Date;
 
   @Column({ default: 0, type: "bigint", width: 20, nullable: true })
   @IsInt()
   @Min(0)
   @ApiProperty()
-  revenue: number;
+  public revenue: number;
 
   @Column({ default: 0, type: "int", width: 5, nullable: true })
   @IsInt()
   @Min(0)
   @ApiProperty()
-  runtime: number;
+  public runtime: number;
 
   @Column({ type: "varchar", length: 50, nullable: true })
   @Max(50)
   @ApiProperty()
-  movieStatus: string;
+  public movieStatus: string;
 
   @Column({ type: "varchar", length: 1000, nullable: true })
   @Max(1000)
   @ApiProperty()
-  tagline: string;
+  public tagline: string;
 
   @Column({
     default: 0.0,
@@ -88,36 +88,36 @@ class Movie {
   @IsDecimal()
   @Min(0)
   @ApiProperty()
-  voteAverage: number;
+  public voteAverage: number;
 
   @Column({ default: 0, type: "int", width: 10, nullable: true })
   @IsInt()
   @Min(0)
   @ApiProperty()
-  voteCount: number;
+  public voteCount: number;
 
   @ManyToMany(() => MovieCast, (movieCast) => movieCast.movie)
-  cast: MovieCast[];
+  public cast: MovieCast[];
 
   @ManyToMany(() => MovieCrew, (movieCrew) => movieCrew.movie)
-  crew: MovieCrew[];
+  public crew: MovieCrew[];
 
   @ManyToMany(() => Genre, (genre) => genre.movies)
   @JoinTable({ name: "movie_genre" })
-  genres: Genre[];
+  public genres: Genre[];
 
   @ManyToMany(() => Keyword, (keyword) => keyword.movies)
   @JoinTable({ name: "movie_keywords" })
-  keywords: Keyword[];
+  public keywords: Keyword[];
 
   @ManyToMany(() => ProductionCompany, (company) => company.movies)
   @JoinTable({ name: "movie_company" })
-  companies: ProductionCompany[];
+  public companies: ProductionCompany[];
 
   /**
    * @type {RecordLinksDto}
    */
-  links: RecordLinksDto = new RecordLinksDto();
+  public links?: RecordLinksDto = new RecordLinksDto();
 }
 
 export default Movie;

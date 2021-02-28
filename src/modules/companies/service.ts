@@ -13,7 +13,7 @@ class CompanyService {
   /**
    * @param {Repository<ProductionCompany>} companyRepository
    */
-  constructor(
+  public constructor(
     @Inject(Repositories.Company)
     private companyRepository: Repository<ProductionCompany>,
     private urlService: UrlService,
@@ -24,7 +24,7 @@ class CompanyService {
    *
    * @return {Promise<number>}
    */
-  async totalRecords(): Promise<number> {
+  public async totalRecords(): Promise<number> {
     return this.companyRepository.count();
   }
 
@@ -34,7 +34,9 @@ class CompanyService {
    * @param {PaginationDto} query
    * @return {Promise<[ProductionCompany[], number]>}
    */
-  async findAll(query: PaginationDto): Promise<[ProductionCompany[], number]> {
+  public async findAll(
+    query: PaginationDto,
+  ): Promise<[ProductionCompany[], number]> {
     const [
       companies,
       count,
@@ -60,7 +62,7 @@ class CompanyService {
    * @param {number} id
    * @return {Promise<ProductionCompany | undefined>}
    */
-  async findOne(id: number): Promise<ProductionCompany | undefined> {
+  public async findOne(id: number): Promise<ProductionCompany | undefined> {
     const company = await this.companyRepository.findOne(id);
 
     if (!company) {

@@ -24,7 +24,7 @@ class CountryController {
   /**
    * @param {CountryService} countryService
    */
-  constructor(
+  public constructor(
     private countryService: CountryService,
     private urlService: UrlService,
   ) {}
@@ -36,7 +36,7 @@ class CountryController {
    * @return {Promise<CountriesDto>}
    */
   @Get()
-  async findAll(@Query() query: PaginationDto): Promise<CountriesDto> {
+  public async findAll(@Query() query: PaginationDto): Promise<CountriesDto> {
     const [countries, totalRecords] = await this.countryService.findAll(query);
 
     const response = new CountriesDto();
@@ -59,7 +59,7 @@ class CountryController {
    * @return {Promise<CountryDto>}
    */
   @Get(":id")
-  async findOne(@Param("id") id: number): Promise<CountryDto> {
+  public async findOne(@Param("id") id: number): Promise<CountryDto> {
     const country = await this.countryService.findOne(id);
 
     if (!country) {
@@ -80,7 +80,7 @@ class CountryController {
    * @return {Promise<CountryDto>}
    */
   @Post()
-  async create(@Body() body: Country): Promise<CountryDto> {
+  public async create(@Body() body: Country): Promise<CountryDto> {
     const country = await this.countryService.create(body);
 
     const response = new CountryDto();
@@ -97,7 +97,7 @@ class CountryController {
    * @return {Promise<CountryDto>}
    */
   @Put(":id")
-  async update(
+  public async update(
     @Param("id") id: number,
     @Body() body: Country,
   ): Promise<CountryDto> {

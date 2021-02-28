@@ -7,7 +7,7 @@ import { RecordLinksDto } from "../../dto/recordLinks.dto";
 
 @Injectable()
 class UrlService {
-  getLinksDto(path: string, meta: MetaDto): LinksDto {
+  public getLinksDto(path: string, meta: MetaDto): LinksDto {
     const links = new LinksDto();
 
     const { currentPage, isLastPage, perPage, totalPages } = meta;
@@ -29,7 +29,7 @@ class UrlService {
     return links;
   }
 
-  getRecordLinksDto(path: string, id: number | string): RecordLinksDto {
+  public getRecordLinksDto(path: string, id: number | string): RecordLinksDto {
     const link = new RecordLinksDto();
 
     link.self = new URL(`${path}/${id}`, BASE_URL).toString();
@@ -37,7 +37,7 @@ class UrlService {
     return link;
   }
 
-  getFirstLink(path: string, perPage: number): string {
+  public getFirstLink(path: string, perPage: number): string {
     const first = new URL(path, BASE_URL);
 
     first.searchParams.append("page", "1");
@@ -46,7 +46,7 @@ class UrlService {
     return first.toString();
   }
 
-  getNextLink(
+  public getNextLink(
     path: string,
     currentPage: number,
     totalPages: number,
@@ -64,7 +64,11 @@ class UrlService {
     return next.toString();
   }
 
-  getPreviousLink(path: string, currentPage: number, perPage: number): string {
+  public getPreviousLink(
+    path: string,
+    currentPage: number,
+    perPage: number,
+  ): string {
     const prev = new URL(path, BASE_URL);
 
     prev.searchParams.append("page", String(Math.max(1, currentPage - 1)));
@@ -73,7 +77,11 @@ class UrlService {
     return prev.toString();
   }
 
-  getLastLink(path: string, totalPages: number, perPage: number): string {
+  public getLastLink(
+    path: string,
+    totalPages: number,
+    perPage: number,
+  ): string {
     const last = new URL(path, BASE_URL);
 
     last.searchParams.append("page", String(totalPages));

@@ -15,7 +15,7 @@ class Country {
    */
   @PrimaryGeneratedColumn({ type: "int" })
   @ApiPropertyOptional()
-  id: number;
+  public id: number;
 
   /**
    * The country's iso code
@@ -26,7 +26,7 @@ class Country {
   @MaxLength(10)
   @IsString()
   @ApiProperty()
-  isoCode: string;
+  public isoCode: string;
 
   /**
    * The name of the country
@@ -37,12 +37,12 @@ class Country {
   @MaxLength(200)
   @IsString()
   @ApiProperty()
-  name: string;
+  public name: string;
 
   /**
    * @type {RecordLinksDto}
    */
-  links?: RecordLinksDto = new RecordLinksDto();
+  public links?: RecordLinksDto = new RecordLinksDto();
 }
 
 export default Country;

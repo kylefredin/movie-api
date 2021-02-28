@@ -19,7 +19,7 @@ class PaginationDto {
   @Transform(({ value }) => (isFinite(value) ? Number(value) : value))
   @IsInt()
   @Min(1)
-  page: number = defaultPage;
+  public page: number = defaultPage;
 
   /**
    * The number of results per page
@@ -30,14 +30,14 @@ class PaginationDto {
   @IsInt()
   @Min(1)
   @Max(maximumPerPage)
-  perPage: number = defaultPerPage;
+  public perPage: number = defaultPerPage;
 
   /**
    * Based on perPage, the number of items to limit the query to
    *
    * @type {number}
    */
-  get limit(): number {
+  public get limit(): number {
     return this.perPage;
   }
 
@@ -46,7 +46,7 @@ class PaginationDto {
    *
    * @type {number}
    */
-  get offset(): number {
+  public get offset(): number {
     if (this.page < 2) {
       return 0;
     }

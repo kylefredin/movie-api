@@ -4,12 +4,12 @@ import { Entity, Column, PrimaryColumn } from "typeorm";
 @Entity()
 class Person {
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  id: number;
+  public id: number;
 
   @Column({ default: "", type: "varchar", length: 500, nullable: true })
   @Max(500)
   @IsString()
-  name: string;
+  public name: string;
 }
 
 export default Person;

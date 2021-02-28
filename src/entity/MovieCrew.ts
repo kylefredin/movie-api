@@ -13,22 +13,22 @@ import { Person } from "./Person";
 @Entity()
 class MovieCrew {
   @PrimaryGeneratedColumn({ type: "int" })
-  id: number;
+  public id: number;
 
   @ManyToOne(() => Movie, (movie) => movie.crew)
-  movie: Movie;
+  public movie: Movie;
 
   @ManyToOne(() => Person)
-  person: Person;
+  public person: Person;
 
   @ManyToOne(() => Department)
   @JoinColumn({ name: "departmentId" })
-  department: Department;
+  public department: Department;
 
   @Column({ default: "", type: "varchar", length: 200 })
   @Max(200)
   @IsString()
-  job: string;
+  public job: string;
 }
 
 export default MovieCrew;

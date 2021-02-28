@@ -13,7 +13,7 @@ class ProductionCompany {
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
   @ApiPropertyOptional()
-  id: number;
+  public id: number;
 
   /**
    * The production company's name
@@ -24,7 +24,7 @@ class ProductionCompany {
   @Max(200)
   @IsString()
   @ApiProperty()
-  name: string;
+  public name: string;
 
   /**
    * List of movies for the production company
@@ -32,12 +32,12 @@ class ProductionCompany {
    * @type {Movie[]}
    */
   @ManyToMany(() => Movie, (movie) => movie.companies)
-  movies: Movie[];
+  public movies: Movie[];
 
   /**
    * @type {RecordLinksDto}
    */
-  links: RecordLinksDto = new RecordLinksDto();
+  public links?: RecordLinksDto = new RecordLinksDto();
 }
 
 export default ProductionCompany;

@@ -17,7 +17,7 @@ class MetaDto {
    */
   @IsInt()
   @Min(0)
-  totalRecords: number = 0;
+  public totalRecords: number = 0;
 
   /**
    * The current page
@@ -26,7 +26,7 @@ class MetaDto {
    */
   @IsInt()
   @Min(1)
-  currentPage: number = defaultPage;
+  public currentPage: number = defaultPage;
 
   /**
    * The number of results per page
@@ -36,7 +36,7 @@ class MetaDto {
   @IsInt()
   @Min(1)
   @Max(maximumPerPage)
-  perPage: number = defaultPerPage;
+  public perPage: number = defaultPerPage;
 
   /**
    * The total number of pages, based on total records and records per page
@@ -45,7 +45,7 @@ class MetaDto {
    */
   @IsInt()
   @Min(0)
-  get totalPages(): number {
+  public get totalPages(): number {
     if (!this.totalRecords) {
       return 0;
     }
@@ -59,7 +59,7 @@ class MetaDto {
    * @type {boolean}
    */
   @IsBoolean()
-  get isFirstPage(): boolean {
+  public get isFirstPage(): boolean {
     return this.currentPage === 1;
   }
 
@@ -69,7 +69,7 @@ class MetaDto {
    * @type {boolean}
    */
   @IsBoolean()
-  get isLastPage(): boolean {
+  public get isLastPage(): boolean {
     return this.currentPage === this.totalPages;
   }
 }

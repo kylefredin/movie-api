@@ -5,13 +5,13 @@ import { Movie } from "./Movie";
 @Entity()
 class ProductionCountry {
   @PrimaryGeneratedColumn({ type: "int" })
-  id: number;
+  public id: number;
 
   @ManyToOne(() => Movie)
-  movie: Movie;
+  public movie: Movie;
 
   @ManyToOne(() => Country)
-  country: Country;
+  public country: Country;
 }
 
 export default ProductionCountry;

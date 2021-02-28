@@ -12,7 +12,7 @@ class Gender {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  id: number;
+  public id: number;
 
   /**
    * The name of the gender
@@ -22,7 +22,7 @@ class Gender {
   @Column({ type: "varchar", length: 20, nullable: false })
   @MaxLength(20)
   @IsString()
-  gender: string;
+  public gender: string;
 }
 
 export default Gender;

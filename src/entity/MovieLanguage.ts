@@ -6,18 +6,18 @@ import { Movie } from "./Movie";
 @Entity()
 class MovieLanguage {
   @PrimaryGeneratedColumn({ type: "int" })
-  id: number;
+  public id: number;
 
   @ManyToOne(() => Movie)
-  movie: Movie;
+  public movie: Movie;
 
   @ManyToOne(() => Language)
   @JoinColumn({ name: "languageId" })
-  language: Language;
+  public language: Language;
 
   @ManyToOne(() => LanguageRole)
   @JoinColumn({ name: "languageRoleId" })
-  languageRole: LanguageRole;
+  public languageRole: LanguageRole;
 }
 
 export default MovieLanguage;

@@ -7,7 +7,7 @@ class CountryDto {
   /**
    * @type {Country}
    */
-  country: Country;
+  public country: Country;
 }
 
 export default CountryDto;

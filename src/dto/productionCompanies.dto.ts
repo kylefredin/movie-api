@@ -9,17 +9,17 @@ class ProductionCompaniesDto {
   /**
    * @type {ProductionCompany[]}
    */
-  companies: ProductionCompany[];
+  public companies: ProductionCompany[];
 
   /**
    * @type {MetaDto}
    */
-  meta: MetaDto = new MetaDto();
+  public meta: MetaDto = new MetaDto();
 
   /**
    * @type {LinksDto}
    */
-  links: LinksDto = new LinksDto();
+  public links: LinksDto = new LinksDto();
 }
 
 export default ProductionCompaniesDto;

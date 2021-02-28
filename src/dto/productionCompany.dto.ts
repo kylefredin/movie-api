@@ -7,7 +7,7 @@ class ProductionCompanyDto {
   /**
    * @type {ProductionCompany}
    */
-  company: ProductionCompany;
+  public company: ProductionCompany;
 }
 
 export default ProductionCompanyDto;

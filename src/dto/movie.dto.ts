@@ -7,7 +7,7 @@ class MovieDto {
   /**
    * @type {Movie}
    */
-  movie: Movie;
+  public movie: Movie;
 }
 
 export default MovieDto;

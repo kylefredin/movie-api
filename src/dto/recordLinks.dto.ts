@@ -7,7 +7,7 @@ class RecordLinksDto {
    *
    * @type {string | null}
    */
-  self: string | null = null;
+  public self: string | null = null;
 }
 
 export default RecordLinksDto;

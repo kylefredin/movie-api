@@ -13,7 +13,7 @@ class Genre {
    * @type {number}
    */
   @PrimaryColumn({ type: "int", width: 10, nullable: false })
-  id: number;
+  public id: number;
 
   /**
    * The name of the genre
@@ -23,7 +23,7 @@ class Genre {
   @Column({ type: "varchar", length: 100, nullable: false })
   @MaxLength(200)
   @IsString()
-  name: string;
+  public name: string;
 
   /**
    * List of movies for the genre
@@ -31,7 +31,7 @@ class Genre {
    * @type {Movie[]}
    */
   @ManyToMany(() => Movie, (movie) => movie.genres)
-  movies: Movie[];
+  public movies: Movie[];
 }
 
 export default Genre;
