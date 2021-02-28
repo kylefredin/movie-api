@@ -106,7 +106,7 @@
     "@typescript-eslint/dot-notation": "error",
     "@typescript-eslint/func-call-spacing": "error",
     "@typescript-eslint/indent": "off",
-    "@typescript-eslint/init-declarations": "off",
+    "@typescript-eslint/init-declarations": "error",
     "@typescript-eslint/keyword-spacing": "error",
     "@typescript-eslint/lines-between-class-members": "error",
     "@typescript-eslint/no-array-constructor": "error",
@@ -151,13 +151,17 @@
     {
       "files": ["*.spec.ts"],
       "rules": {
+        "@typescript-eslint/init-declarations": "off",
         "@typescript-eslint/no-empty-function": "off",
         "@typescript-eslint/no-floating-promises": "off"
       }
     },
     {
       "files": ["*e2e-spec.ts"],
-      "rules": { "@typescript-eslint/no-unsafe-call": "off" }
+      "rules": {
+        "@typescript-eslint/init-declarations": "off",
+        "@typescript-eslint/no-unsafe-call": "off"
+      }
     }
   ]
 }
