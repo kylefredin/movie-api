@@ -131,14 +131,17 @@
     "@typescript-eslint/quotes": "off",
     "@typescript-eslint/require-await": "error",
     "@typescript-eslint/return-await": "error",
-    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/semi": "error",
     "@typescript-eslint/space-before-function-paren": "off"
   },
 
   "overrides": [
     {
       "files": ["*.json"],
-      "rules": { "@typescript-eslint/no-unused-expressions": "off" }
+      "rules": {
+        "@typescript-eslint/no-unused-expressions": "off",
+        "@typescript-eslint/semi": "off"
+      }
     },
     {
       "files": ["*.spec.ts"],
