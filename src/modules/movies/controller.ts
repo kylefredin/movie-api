@@ -25,8 +25,8 @@ class MovieController {
    * @param {MovieService} movieService
    */
   public constructor(
-    private movieService: MovieService,
-    private urlService: UrlService,
+    private readonly movieService: MovieService,
+    private readonly urlService: UrlService,
   ) {}
 
   /**

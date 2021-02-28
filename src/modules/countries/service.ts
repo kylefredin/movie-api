@@ -15,8 +15,8 @@ class CountryService {
    */
   public constructor(
     @Inject(Repositories.country)
-    private countryRepository: Repository<Country>,
-    private urlService: UrlService,
+    private readonly countryRepository: Repository<Country>,
+    private readonly urlService: UrlService,
   ) {}
 
   /**

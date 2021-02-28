@@ -21,8 +21,8 @@ class CompanyController {
    * @param {CompanyService} companyService
    */
   public constructor(
-    private companyService: CompanyService,
-    private urlService: UrlService,
+    private readonly companyService: CompanyService,
+    private readonly urlService: UrlService,
   ) {}
 
   /**

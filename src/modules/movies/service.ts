@@ -15,8 +15,8 @@ class MovieService {
    */
   public constructor(
     @Inject(Repositories.movie)
-    private movieRepository: Repository<Movie>,
-    private urlService: UrlService,
+    private readonly movieRepository: Repository<Movie>,
+    private readonly urlService: UrlService,
   ) {}
 
   /**

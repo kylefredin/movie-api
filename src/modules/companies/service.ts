@@ -15,8 +15,8 @@ class CompanyService {
    */
   public constructor(
     @Inject(Repositories.company)
-    private companyRepository: Repository<ProductionCompany>,
-    private urlService: UrlService,
+    private readonly companyRepository: Repository<ProductionCompany>,
+    private readonly urlService: UrlService,
   ) {}
 
   /**

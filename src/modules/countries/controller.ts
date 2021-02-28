@@ -25,8 +25,8 @@ class CountryController {
    * @param {CountryService} countryService
    */
   public constructor(
-    private countryService: CountryService,
-    private urlService: UrlService,
+    private readonly countryService: CountryService,
+    private readonly urlService: UrlService,
   ) {}
 
   /**
