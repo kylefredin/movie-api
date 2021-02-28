@@ -1,4 +1,5 @@
-import { createConnection } from "typeorm";
+import { Connections } from "../enums";
+import { createConnection, Connection } from "typeorm";
 
 import {
   DATABASE_HOST,
@@ -10,7 +11,18 @@ import {
 
 const databaseProviders = [
   {
-    provide: "DATABASE_CONNECTION",
+    /**
+     * Defines the name of this provider
+     *
+     * @type {string}
+     */
+    provide: Connections.Database,
+
+    /**
+     * Defines the function to run when this provider is requested
+     *
+     * @return {Promise<Connection>}
+     */
     useFactory: async () =>
       createConnection({
         type: "mysql",
@@ -21,7 +33,7 @@ const databaseProviders = [
         database: DATABASE_NAME,
         entities: [__dirname + "/../entity/*.js"],
         synchronize: true,
-      }).then((connection) => connection),
+      }).then((connection: Connection) => connection),
   },
 ];
 
