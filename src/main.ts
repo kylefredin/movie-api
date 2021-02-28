@@ -16,4 +16,4 @@ async function start(): Promise<void> {
   await app.listen(Number(SERVER_PORT));
 }
 
-start();
+start().catch(console.error);
