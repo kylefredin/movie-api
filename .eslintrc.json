@@ -93,7 +93,7 @@
     "@typescript-eslint/restrict-plus-operands": "error",
     "@typescript-eslint/restrict-template-expressions": "error",
     "@typescript-eslint/sort-type-union-intersection-members": "error",
-    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/strict-boolean-expressions": "error",
     "@typescript-eslint/switch-exhaustiveness-check": "error",
     "@typescript-eslint/triple-slash-reference": "error",
     "@typescript-eslint/type-annotation-spacing": "error",
