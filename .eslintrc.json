@@ -100,7 +100,7 @@
     "@typescript-eslint/typedef": "error",
     "@typescript-eslint/unbound-method": "error",
     "@typescript-eslint/brace-style": "error",
-    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
     "@typescript-eslint/comma-spacing": "error",
     "@typescript-eslint/default-param-last": "error",
     "@typescript-eslint/dot-notation": "error",
@@ -143,6 +143,7 @@
     {
       "files": ["*.json"],
       "rules": {
+        "@typescript-eslint/comma-dangle": ["error", "only-multiline"],
         "@typescript-eslint/no-unused-expressions": "off",
         "@typescript-eslint/semi": "off"
       }
