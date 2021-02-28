@@ -112,7 +112,7 @@
     "@typescript-eslint/no-array-constructor": "error",
     "@typescript-eslint/no-dupe-class-members": "error",
     "@typescript-eslint/no-duplicate-imports": "error",
-    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-empty-function": "error",
     "@typescript-eslint/no-extra-parens": "error",
     "@typescript-eslint/no-extra-semi": "error",
     "@typescript-eslint/no-implied-eval": "error",
@@ -149,7 +149,10 @@
     },
     {
       "files": ["*.spec.ts"],
-      "rules": { "@typescript-eslint/no-floating-promises": "off" }
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-floating-promises": "off"
+      }
     },
     {
       "files": ["*e2e-spec.ts"],
